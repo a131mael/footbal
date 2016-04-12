@@ -41,7 +41,6 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.aaf.engine.data.MemberRepository;
 import org.aaf.engine.model.Member;
 import org.aaf.engine.model.Property;
 import org.aaf.engine.service.MemberRegistration;
@@ -60,9 +59,6 @@ public class PropertyService {
     private Logger log;
 
     @Inject
-    private Validator validator;
-
-    @Inject
     private PropertyManager repository;
 
     
@@ -77,6 +73,16 @@ public class PropertyService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Property> teste() {
         return repository.queryCache();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void createProperty(Property member) {
+
+
+    	repository.save(member);
+
     }
 
    

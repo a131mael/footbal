@@ -24,7 +24,7 @@ public class PropertyManager {
    }
 
    public List<Property> queryCache() {
-       Query query = em.createQuery("FROM Property p");
+       Query query = em.createNativeQuery("db.Property.find()",Property.class);
 
        List<Property> list = query.getResultList();
        return list;
@@ -32,7 +32,7 @@ public class PropertyManager {
    
    public List<Property> queryCache2() {
 	   
-	    String query1 = "db.Property.find({'value': 'value1'})";
+	    String query1 = "db.Property.find({'value': 'b'})";
 	    Query query = em.createNativeQuery(query1, Property.class);
 	 
 	    List<Property> list = query.getResultList();

@@ -11,7 +11,7 @@ public class Property {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private Double id;
+    private String id;
  
     private String key;
  
