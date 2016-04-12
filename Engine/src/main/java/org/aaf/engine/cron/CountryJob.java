@@ -26,9 +26,9 @@ public class CountryJob implements Job {
 			service = ServiceLocator.getInstance().getEJB("java:global/Engine/CountryService!org.aaf.engine.service.CountryService");
 			
 			Country country = new Country();
-			country.setCod("5");
-			country.setName("teste");
-			service.save(country);
+			country.setCod("1");
+			country.setName("Pais 1");
+			service.register(country);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

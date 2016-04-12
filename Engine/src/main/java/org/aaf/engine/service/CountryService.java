@@ -25,13 +25,13 @@ public class CountryService {
 
 		log.info("Registering " + country.getName());
 		em.persist(country);
+		leagueService.createLeague(country);
 	}
 
 	public void save(Country country) throws Exception {
 		
 		log.info("Registering " + country.getName());
 		em.persist(country);
-		leagueService.createLeague(country);
 	}
 
 }

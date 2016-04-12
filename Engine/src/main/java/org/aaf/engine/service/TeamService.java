@@ -1,18 +1,14 @@
 package org.aaf.engine.service;
 
-import java.util.List;
 import java.util.logging.Logger;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
-import org.aaf.engine.model.Country;
-import org.aaf.engine.model.Member;
-import org.aaf.engine.model.Property;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.aaf.engine.model.League;
+import org.aaf.engine.model.Team;
 
 @Stateless
 public class TeamService {
@@ -22,17 +18,30 @@ public class TeamService {
 
 	@Inject
 	private Logger log;
+	
+	@Inject
+	private PlayerService playerService;
 
-	public void register(Country country) throws Exception {
-
-		log.info("Registering " + country.getName());
-		em.persist(country);
+	public void register(League league) throws Exception {
+		em.persist(league);
+		
+		for(int i=1; i<=8; i++){
+			playerService.register(createTeam(i, league));
+		}
+		log.info("Registering " + league.getName());
 	}
 
-	public void save(Country country) throws Exception {
+	public void save(League league) throws Exception {
 
-		log.info("Registering " + country.getName());
-		em.persist(country);
+		log.info("Registering " + league.getName());
+		em.persist(league);
 	}
 
+	private Team createTeam(int index, League league){
+		Team team = new Team();
+		team.setCod(index+"");
+		team.setName("Time " + index);
+		team.setLeague(league);
+		return team;
+	}
 }

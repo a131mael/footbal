@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
 public class League {
 
@@ -20,6 +18,8 @@ public class League {
 	private String name;
 
 	private String cod;
+	
+	private int level;
 
 	@ManyToOne
 	private Country country;
@@ -54,6 +54,14 @@ public class League {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 }
