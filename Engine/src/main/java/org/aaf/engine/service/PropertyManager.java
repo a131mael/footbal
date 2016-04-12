@@ -12,7 +12,6 @@ import org.aaf.engine.model.Property;
 import javax.ejb.Stateless;
 
 @Stateless
-
 public class PropertyManager {
 
    @PersistenceContext(unitName = "mongo-ogm")
