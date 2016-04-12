@@ -2,16 +2,19 @@ package org.aaf.engine.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
 import org.hibernate.annotations.GenericGenerator;
  
 @Entity
 public class Property {
  
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+	@Id
+	@GeneratedValue(generator = "GENERATE_Property", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "GENERATE_Property", sequenceName = "Property_pk_seq", allocationSize = 1)
+	private Long id;
  
     private String key;
  

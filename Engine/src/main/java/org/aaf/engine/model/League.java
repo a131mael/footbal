@@ -4,21 +4,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.GenericGenerator;
- 
+
 @Entity
-public class Country {
- 
+public class League {
+
 	@Id
-	@GeneratedValue(generator = "GENERATE_Country", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name = "GENERATE_Country", sequenceName = "Country_pk_seq", allocationSize = 1)
+	@GeneratedValue(generator = "GENERATE_League", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "GENERATE_League", sequenceName = "League_pk_seq", allocationSize = 1)
 	private Long id;
- 
-    private String name;
- 
-    private String cod;
+
+	private String name;
+
+	private String cod;
+
+	@ManyToOne
+	private Country country;
 
 	public String getCod() {
 		return cod;
@@ -36,6 +40,14 @@ public class Country {
 		this.name = name;
 	}
 
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -43,4 +55,5 @@ public class Country {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 }

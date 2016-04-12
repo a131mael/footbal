@@ -15,7 +15,7 @@
             <cron>
                 <name>CountryJob</name>
                 <job-name>CountryJob</job-name>
-                <cron-expression>*/15 * * * * ? *</cron-expression>
+                <cron-expression>0 50 14 * * ? *</cron-expression>
             </cron>
         </trigger>
     </schedule>

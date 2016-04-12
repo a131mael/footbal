@@ -28,7 +28,7 @@ public class CountryJob implements Job {
 			Country country = new Country();
 			country.setCod("5");
 			country.setName("teste");
-			service.register(country);
+			service.save(country);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
