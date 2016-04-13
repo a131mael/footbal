@@ -3,10 +3,8 @@ package org.aaf.engine.cron;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
-import javax.validation.Validator;
 
-import org.aaf.engine.data.MemberRepository;
-import org.aaf.engine.model.Country;
+import org.aaf.engine.dto.CountryDTO;
 import org.aaf.engine.service.CountryService;
 import org.aaf.engine.util.ServiceLocator;
 import org.quartz.Job;
@@ -25,13 +23,12 @@ public class CountryJob implements Job {
 		try {
 			service = ServiceLocator.getInstance().getEJB("java:global/Engine/CountryService!org.aaf.engine.service.CountryService");
 			
-			Country country = new Country();
+			CountryDTO country = new CountryDTO();
 			country.setCod("1");
 			country.setName("Pais 1");
 			service.register(country);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.info("CRIANDO PAIS");
 		}
 		System.out.println("Call to WebService");
 

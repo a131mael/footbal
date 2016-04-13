@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.aaf.engine.dto.CountryDTO;
 import org.aaf.engine.model.Country;
 
 @Stateless
@@ -21,10 +22,9 @@ public class CountryService {
 	@Inject
 	private LeagueService leagueService;
 
-	public void register(Country country) throws Exception {
+	public void register(CountryDTO country) throws Exception {
 
 		log.info("Registering " + country.getName());
-		em.persist(country);
 		leagueService.createLeague(country);
 	}
 
