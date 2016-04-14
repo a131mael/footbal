@@ -46,6 +46,28 @@ function updateMemberTable() {
     });
 }
 
+/* Uses JAX-RS GET to retrieve current member list */
+function updateCountryTable() {
+    // Display the loader widget
+    $.mobile.loading("show");
+
+    $.ajax({
+        url: "rest/countries",
+        cache: false,
+        success: function(data) {
+            $( "#members" ).empty().append(buildMemberRows(data));
+            $( "#member-table" ).table( "refresh" );
+        },
+        error: function(error) {
+            // console.log("error updating table -" + error.status);
+        },
+        complete: function() {
+            // Hide the loader widget
+            $.mobile.loading("hide");
+        }
+    });
+}
+
 /*
  * Attempts to register a new member using a JAX-RS POST. The callbacks the
  * refresh the member table, or process JAX-RS response codes to update the

@@ -9,22 +9,23 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Team {
+public class User {
 
 	@Id
-	@GeneratedValue(generator = "GENERATE_Team", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name = "GENERATE_Team", sequenceName = "Team_pk_seq", allocationSize = 1)
+	@GeneratedValue(generator = "GENERATE_User", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "GENERATE_User", sequenceName = "User_pk_seq", allocationSize = 1)
 	private Long id;
 
 	private String name;
 
 	private String cod;
 
-	@ManyToOne
-	private League league;
-	
 	@OneToOne
-	private User owner;
+	private Team team;
+	
+	private String login;
+	
+	private String senha;
 
 	public String getCod() {
 		return cod;
@@ -50,20 +51,28 @@ public class Team {
 		this.id = id;
 	}
 
-	public League getLeague() {
-		return league;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setLeague(League league) {
-		this.league = league;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
-	public User getOwner() {
-		return owner;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setOwner(User owner) {
-		this.owner = owner;
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
 }

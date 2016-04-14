@@ -1,5 +1,6 @@
 package org.aaf.engine.service;
 
+import java.util.Random;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
@@ -39,10 +40,16 @@ public class PlayerService {
 	}
 	
 	private Player createPlayer(int index, Team team){
+		Random gerador = new Random();
 		Player player = new Player();
 		player.setCod(index+"");
 		player.setName("Jogador " + index);
 		player.setTeam(team);
+		player.setAgility((float) (gerador.nextDouble() * 25));
+		player.setDefense((float) (gerador.nextDouble() * 25));
+		player.setKick((float) (gerador.nextDouble() * 25));
+		player.setPass((float) (gerador.nextDouble() * 25));
+		player.setVelocity((float) (gerador.nextDouble() * 25));
 		return player;
 	}
 

@@ -52,9 +52,10 @@ public class CountryRest {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Country> listAllMembers() {
-		// return countryService.findAllOrderedByName();
-		return null;
+	public List<CountryDTO> listAllCountries() {
+		
+		return countryService.findAllOrderedByName();
+		
 	}
 
 	@POST

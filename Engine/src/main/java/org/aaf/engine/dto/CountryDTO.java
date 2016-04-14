@@ -10,6 +10,10 @@ public class CountryDTO {
     
     private String firtLeague;
     
+    private long capacity;
+    
+    private long activeTeams;
+    
     private Country country;
     
     public Country getCountry(){
@@ -43,5 +47,21 @@ public class CountryDTO {
 
 	public void setFirtLeague(String firtLeague) {
 		this.firtLeague = firtLeague;
+	}
+
+	public long getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(long capacity) {
+		this.capacity = capacity;
+	}
+
+	public long getActiveTeams() {
+		return activeTeams;
+	}
+
+	public void setActiveTeams(long activeTeams) {
+		this.activeTeams = activeTeams;
 	}
 }
