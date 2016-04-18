@@ -29,6 +29,9 @@
     <class>org.aaf.engine.model.Player</class>
     <class>org.aaf.engine.model.Team</class>
     <class>org.aaf.engine.model.User</class>
+    <class>org.aaf.engine.model.Property</class>
+    <class>java.lang.Long</class>
+    
 <!--     <exclude-unlisted-classes>true</exclude-unlisted-classes> -->
     <properties>
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>

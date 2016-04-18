@@ -38,7 +38,7 @@ public class LeagueService {
 	public void createLeague(CountryDTO country) {
 		try {
 			em.persist(country.getCountry());
-			for(int i = 1 ; i<=5; i++){
+			for(int i = 1 ; i<=37; i++){
 				teamService.register(createLeague(i, country));	;
 			}
 
@@ -55,9 +55,12 @@ public class LeagueService {
 		if(index == 1){
 			league.setLevel(1);	
 			league.setName(country.getFirtLeague());
-		}else{
+		}else if(index > 1 && index < 6){
 			league.setLevel(2);
-			league.setName("League " + index);
+			league.setName("League B " + (index -1));
+		}else{
+			league.setLevel(3);
+			league.setName("League C " + (index -5));
 		}
 		
 		return league;
