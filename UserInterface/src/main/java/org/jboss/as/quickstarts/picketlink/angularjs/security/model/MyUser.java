@@ -34,6 +34,8 @@ import org.picketlink.idm.query.QueryParameter;
 import static org.picketlink.idm.model.annotation.IdentityStereotype.Stereotype.USER;
 import static org.picketlink.idm.model.annotation.StereotypeProperty.Property.IDENTITY_USER_NAME;
 
+import org.aaf.ui.dto.User;
+
 /**
  * <p>This is a custom {@link org.picketlink.idm.model.Account} type to represent the application users.</p>
  *
@@ -69,7 +71,7 @@ public class MyUser extends AbstractIdentityType implements Account {
     private String activationCode;
 
     @AttributeProperty
-    private Person person;
+    private User user;
 
     public MyUser() {
         this(null);
@@ -87,14 +89,6 @@ public class MyUser extends AbstractIdentityType implements Account {
         this.loginName = loginName;
     }
 
-    public Person getPerson() {
-        return this.person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
     }
@@ -106,4 +100,12 @@ public class MyUser extends AbstractIdentityType implements Account {
     public String getActivationCode() {
         return this.activationCode;
     }
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }

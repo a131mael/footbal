@@ -21,13 +21,7 @@
  */
 package org.jboss.as.quickstarts.picketlink.angularjs.security.service;
 
-import org.aaf.ui.dto.UserRegistrationDTO;
-import org.jboss.as.quickstarts.picketlink.angularjs.model.Email;
-import org.jboss.as.quickstarts.picketlink.angularjs.security.model.IdentityModelManager;
-import org.jboss.as.quickstarts.picketlink.angularjs.security.model.MyUser;
-import org.jboss.as.quickstarts.picketlink.angularjs.security.model.UserRegistration;
-import org.jboss.as.quickstarts.picketlink.angularjs.util.MessageBuilder;
-import org.picketlink.idm.credential.Token;
+import static org.jboss.as.quickstarts.picketlink.angularjs.security.model.ApplicationRole.USER;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
@@ -39,7 +33,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import static org.jboss.as.quickstarts.picketlink.angularjs.security.model.ApplicationRole.USER;
+import org.aaf.ui.dto.UserRegistrationDTO;
+import org.jboss.as.quickstarts.picketlink.angularjs.model.Email;
+import org.jboss.as.quickstarts.picketlink.angularjs.security.model.IdentityModelManager;
+import org.jboss.as.quickstarts.picketlink.angularjs.security.model.MyUser;
+import org.jboss.as.quickstarts.picketlink.angularjs.util.MessageBuilder;
+import org.picketlink.idm.credential.Token;
 
 /**
  * <p>RESTFul endpoint responsible for:</p>

@@ -21,6 +21,7 @@
  */
 package org.jboss.as.quickstarts.picketlink.angularjs.security;
 
+import org.aaf.ui.dto.User;
 import org.jboss.as.quickstarts.picketlink.angularjs.model.Person;
 import org.jboss.as.quickstarts.picketlink.angularjs.security.model.ApplicationRole;
 import org.jboss.as.quickstarts.picketlink.angularjs.security.model.MyUser;
@@ -130,15 +131,15 @@ public class SecurityInitializer {
             return;
         }
 
-        Person person = new Person();
+        User person = new User();
 
-        person.setFirstName("Almight");
-        person.setLastName("Administrator");
-        person.setEmail(email);
+//        person.setFirstName("Almight");
+//        person.setLastName("Administrator");
+        //person.setEmail(email);
 
-        MyUser admin = new MyUser(person.getEmail());
+        MyUser admin = new MyUser(email);
 
-        admin.setPerson(person);
+        admin.setUser(person);
 
         identityManager.add(admin);
 
