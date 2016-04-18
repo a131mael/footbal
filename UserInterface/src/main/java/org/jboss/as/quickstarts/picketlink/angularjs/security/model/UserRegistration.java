@@ -32,6 +32,10 @@ public class UserRegistration {
     private String email;
     private String password;
     private String passwordConfirmation;
+    
+    private String teamName;
+    private String login;
+    private String country;
 
     public String getFirstName() {
         return firstName;
@@ -76,4 +80,28 @@ public class UserRegistration {
     public boolean isValid() {
         return this.firstName != null && this.lastName != null && this.email != null && this.password != null && this.passwordConfirmation != null;
     }
+
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
 }

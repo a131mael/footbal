@@ -21,6 +21,7 @@
  */
 package org.jboss.as.quickstarts.picketlink.angularjs.security.model;
 
+import org.aaf.ui.dto.UserRegistrationDTO;
 import org.jboss.as.quickstarts.picketlink.angularjs.model.Person;
 import org.jboss.as.quickstarts.picketlink.angularjs.security.authentication.JWSToken;
 import org.picketlink.idm.IdentityManager;
@@ -81,7 +82,7 @@ public class IdentityModelManager {
         return null;
     }
 
-    public MyUser createAccount(UserRegistration request) {
+    public MyUser createAccount(UserRegistrationDTO request) {
         if (!request.isValid()) {
             throw new IllegalArgumentException("Insuficient information.");
         }
@@ -89,8 +90,8 @@ public class IdentityModelManager {
         Person person = new Person();
 
         person.setEmail(request.getEmail());
-        person.setFirstName(request.getFirstName());
-        person.setLastName(request.getLastName());
+       // person.setFirstName(request.getFirstName());
+       // person.setLastName(request.getLastName());
 
         MyUser newUser = new MyUser(request.getEmail());
 

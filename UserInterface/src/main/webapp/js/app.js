@@ -25,7 +25,7 @@ var appModule = angular.module('PLAngular',
 		isFree : false
 	    // Add a default route
 	    }).when('/', {
-		templateUrl : 'partials/login.html',
+		templateUrl : 'partials/index.html',
 		controller : 'LoginCtrl',
 		access : {
 		    isFree : true

@@ -21,6 +21,7 @@
  */
 package org.jboss.as.quickstarts.picketlink.angularjs.security.service;
 
+import org.aaf.ui.dto.UserRegistrationDTO;
 import org.jboss.as.quickstarts.picketlink.angularjs.model.Email;
 import org.jboss.as.quickstarts.picketlink.angularjs.security.model.IdentityModelManager;
 import org.jboss.as.quickstarts.picketlink.angularjs.security.model.MyUser;
@@ -68,7 +69,7 @@ public class RegistrationService {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createMember(UserRegistration request) {
+    public Response createMember(UserRegistrationDTO request) {
         if (!request.getPassword().equals(request.getPasswordConfirmation())) {
             return MessageBuilder.badRequest().message("Password mismatch.").build();
         }
@@ -114,8 +115,8 @@ public class RegistrationService {
     }
 
 
-    private void sendNotification(UserRegistration request, String activationCode) {
-        Email email = new Email("Please complete the signup", "http://localhost:8080/picketlink-angularjs-rest/#/activate/" + activationCode, request.getEmail());
+    private void sendNotification(UserRegistrationDTO request, String activationCode) {
+        Email email = new Email("Please complete the signup", "https://localhost:8443/UserInterface/#/activate/" + activationCode, request.getEmail());
 
         event.fire(email);
     }
