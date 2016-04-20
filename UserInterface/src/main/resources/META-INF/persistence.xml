@@ -9,37 +9,22 @@
 	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
 	OF ANY KIND, either express or implied. See the License for the specific 
 	language governing permissions and limitations under the License. -->
-<persistence version="2.1"
-	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
-        http://xmlns.jcp.org/xml/ns/persistence
-        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<!-- <persistence-unit name="primary"> -->
-	<!-- <properties> -->
-	<!-- Properties for Hibernate -->
-	<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
-	<!-- <property name="hibernate.show_sql" value="false" /> -->
-	<!-- </properties> -->
-	<!-- </persistence-unit> -->
+        http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="primary">
+		<provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
 
- <persistence-unit name="mongo-ogm" transaction-type="JTA">
-    <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
-        <class>org.jboss.as.quickstarts.picketlink.angularjs.model.Person</class>
+
         <class>org.jboss.as.quickstarts.picketlink.angularjs.security.model.entity.MyUserTypeEntity</class>
-        <class>org.picketlink.idm.jpa.model.sample.simple.AttributedTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.RoleTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.GroupTypeEntity</class>
 		<class>org.picketlink.idm.jpa.model.sample.simple.IdentityTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.RelationshipTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.RelationshipIdentityTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.PartitionTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.AttributeTypeEntity</class>
-		<class>org.picketlink.idm.jpa.model.sample.simple.PasswordCredentialTypeEntity</class>
-        <class>org.picketlink.idm.jpa.model.sample.simple.TokenCredentialTypeEntity</class>
         <class>org.aaf.ui.dto.User</class>
-    
-<!--     <exclude-unlisted-classes>true</exclude-unlisted-classes> -->
-    <properties>
+        <class>org.aaf.ui.dto.Team</class>
+        <class>org.aaf.ui.dto.Country</class>
+		<class>org.aaf.ui.dto.League</class>
+		<properties>
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
       <property name="hibernate.ogm.datastore.database" value="football"/>
       <property name="hibernate.ogm.datastore.host" value="localhost"/>
@@ -52,6 +37,5 @@
 <!-- 	 <property name="hibernate.hbm2ddl.auto" value="update" />  -->
 	 <property name="hibernate.show_sql" value="true" />
     </properties>
-  </persistence-unit>
-
+	</persistence-unit>
 </persistence>

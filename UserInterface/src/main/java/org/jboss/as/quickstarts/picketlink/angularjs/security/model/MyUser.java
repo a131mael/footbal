@@ -21,7 +21,10 @@
  */
 package org.jboss.as.quickstarts.picketlink.angularjs.security.model;
 
-import org.jboss.as.quickstarts.picketlink.angularjs.model.Person;
+import static org.picketlink.idm.model.annotation.IdentityStereotype.Stereotype.USER;
+import static org.picketlink.idm.model.annotation.StereotypeProperty.Property.IDENTITY_USER_NAME;
+
+import org.aaf.ui.dto.User;
 import org.picketlink.idm.model.AbstractIdentityType;
 import org.picketlink.idm.model.Account;
 import org.picketlink.idm.model.annotation.AttributeProperty;
@@ -30,11 +33,6 @@ import org.picketlink.idm.model.annotation.StereotypeProperty;
 import org.picketlink.idm.model.annotation.Unique;
 import org.picketlink.idm.query.AttributeParameter;
 import org.picketlink.idm.query.QueryParameter;
-
-import static org.picketlink.idm.model.annotation.IdentityStereotype.Stereotype.USER;
-import static org.picketlink.idm.model.annotation.StereotypeProperty.Property.IDENTITY_USER_NAME;
-
-import org.aaf.ui.dto.User;
 
 /**
  * <p>This is a custom {@link org.picketlink.idm.model.Account} type to represent the application users.</p>

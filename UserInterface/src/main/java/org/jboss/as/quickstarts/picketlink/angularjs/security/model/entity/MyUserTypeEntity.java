@@ -29,7 +29,11 @@ import org.picketlink.idm.jpa.model.sample.simple.IdentityTypeEntity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 /**
  * <p>This is a simple example about how to extend the entity classes provided by the Basic Identity Model to map your own types.
@@ -42,16 +46,18 @@ import javax.persistence.OneToOne;
 @Entity
 @IdentityManaged(MyUser.class)
 public class MyUserTypeEntity extends IdentityTypeEntity {
+	
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    @AttributeValue
-    private String loginName;
+	private String loginName;
 
-    @AttributeValue
     private String activationCode;
 
-    @AttributeValue
-    @OneToOne (cascade = CascadeType.ALL)
-    private Person person;
+//    @OneToOne (cascade = CascadeType.ALL)
+//    private Person person;
 
     public String getLoginName() {
         return this.loginName;
@@ -70,10 +76,10 @@ public class MyUserTypeEntity extends IdentityTypeEntity {
     }
 
     public Person getPerson() {
-        return this.person;
+        return null;
     }
 
     public void setPerson(Person person) {
-        this.person = person;
+ //       this.person = person;
     }
 }

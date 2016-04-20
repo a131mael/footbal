@@ -21,19 +21,13 @@
  */
 package org.jboss.as.quickstarts.picketlink.angularjs.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * @author Pedro Igor
  */
-@Entity
 public class Person implements Serializable {
 
-    @Id
-    @GeneratedValue
     private Long id;
 
     private String firstName;

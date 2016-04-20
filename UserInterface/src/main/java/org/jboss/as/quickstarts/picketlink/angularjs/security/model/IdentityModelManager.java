@@ -21,9 +21,14 @@
  */
 package org.jboss.as.quickstarts.picketlink.angularjs.security.model;
 
+import java.util.List;
+import java.util.UUID;
+
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+
 import org.aaf.ui.dto.User;
 import org.aaf.ui.dto.UserRegistrationDTO;
-import org.jboss.as.quickstarts.picketlink.angularjs.model.Person;
 import org.jboss.as.quickstarts.picketlink.angularjs.security.authentication.JWSToken;
 import org.picketlink.idm.IdentityManager;
 import org.picketlink.idm.RelationshipManager;
@@ -34,11 +39,6 @@ import org.picketlink.idm.model.basic.BasicModel;
 import org.picketlink.idm.model.basic.Role;
 import org.picketlink.idm.query.IdentityQuery;
 import org.picketlink.idm.query.IdentityQueryBuilder;
-
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import java.util.List;
-import java.util.UUID;
 
 /**
  * <p>This class provides an abstraction point to the Identity Management operations required by the application./p>

@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>webInterface</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <h:outputStylesheet name="css/screen.css" />
+</h:head>
+<h:body>
+    <div id="container">
+        <div class="dualbrand">
+            <img src="resources/gfx/dualbrand_logo.png" />
+        </div>
+        <div id="content">
+            <ui:insert name="content">
+                    [Template content will be inserted here]
+         </ui:insert>
+        </div>
+        <div id="aside">
+            <h:form id="formReg" style="border:none">
+            <h2>Member Registration</h2>
+            
+            <h:panelGrid columns="3" columnClasses="titleCell">
+                <h:outputLabel for="teamName" value="Team Name:" />
+                <h:inputText id="teamName" value="#{newUser.team.name}" />
+                <h:message for="teamName" errorClass="invalid" />
+
+				<h:outputLabel for="login" value="Login:" />
+                <h:inputText id="login" value="#{newUser.login}" />
+                <h:message for="login" errorClass="invalid" />
+				
+				<h:outputLabel for="name" value="Name:" />
+                <h:inputText id="name" value="#{newUser.name}" />
+                <h:message for="name" errorClass="invalid" />
+
+                <h:outputLabel for="email2" value="Email:" />
+                <h:inputText id="email2" value="#{newUser.email}" />
+                <h:message for="email2" errorClass="invalid" />
+            </h:panelGrid>
+
+            <p>
+                <h:panelGrid columns="2">
+                    <h:commandButton id="registerNewMember"
+                        action="#{userController.register}"
+                        value="Register" styleClass="register" />
+                    <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true" />
+                </h:panelGrid>
+            </p>
+        </h:form>
+        </div>
+        
+        <div id="footer">
+            <p>
+                This project was generated from a Maven archetype from
+                WildFly.<br />
+            </p>
+        </div>
+    </div>
+</h:body>
+</html>

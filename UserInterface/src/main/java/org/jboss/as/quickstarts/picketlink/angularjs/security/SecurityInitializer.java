@@ -21,8 +21,19 @@
  */
 package org.jboss.as.quickstarts.picketlink.angularjs.security;
 
+import static org.jboss.as.quickstarts.picketlink.angularjs.security.model.IdentityModelManager.findByLoginName;
+import static org.picketlink.idm.model.basic.BasicModel.getRole;
+import static org.picketlink.idm.model.basic.BasicModel.grantRole;
+
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+
+import javax.ejb.Stateless;
+import javax.enterprise.event.Observes;
+
 import org.aaf.ui.dto.User;
-import org.jboss.as.quickstarts.picketlink.angularjs.model.Person;
 import org.jboss.as.quickstarts.picketlink.angularjs.security.model.ApplicationRole;
 import org.jboss.as.quickstarts.picketlink.angularjs.security.model.MyUser;
 import org.picketlink.event.PartitionManagerCreateEvent;
@@ -33,17 +44,6 @@ import org.picketlink.idm.credential.Password;
 import org.picketlink.idm.model.Attribute;
 import org.picketlink.idm.model.basic.Realm;
 import org.picketlink.idm.model.basic.Role;
-
-import javax.ejb.Stateless;
-import javax.enterprise.event.Observes;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-
-import static org.jboss.as.quickstarts.picketlink.angularjs.security.model.IdentityModelManager.findByLoginName;
-import static org.picketlink.idm.model.basic.BasicModel.getRole;
-import static org.picketlink.idm.model.basic.BasicModel.grantRole;
 
 /**
  * <p>Just populates the identity store with a default administrator user and some roles. We also load the private and public
