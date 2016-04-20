@@ -66,15 +66,16 @@ public class TeamService {
 		for (League league : leagues) {
 			queryTeam.append("db.Team.find({'league_id': ");
 			queryTeam.append(league.getId());
-//			queryTeam.append(", ");
-//			queryTeam.append("ownner_id: {$exists: true}");
+			queryTeam.append(", ");
+			queryTeam.append("'owner_id':{'$exists':true}");
 			queryTeam.append("})");
-			List<Team> times = em.createNativeQuery(queryTeam.toString(),Team.class).getResultList();
-			for(Team team :times ){
-				if(team.getOwner() !=null){
-					countTeam ++;
-				}
+			try{
+				countTeam += (Long) em.createNativeQuery(queryTeam.toString()).getSingleResult();
+				
+			}catch(Exception e){
+				//TODO ignore
 			}
+			
 			queryTeam = new StringBuilder();
 		}
 		return countTeam;

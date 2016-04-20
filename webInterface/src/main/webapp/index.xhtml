@@ -31,28 +31,22 @@
         </div>
 
         <h:form id="reg">
-            <h2>Member Registration</h2>
-            <p>Enforces annotation-based constraints defined on the
-                model class.</p>
+            <h2>Login</h2>
             <h:panelGrid columns="3" columnClasses="titleCell">
-                <h:outputLabel for="name" value="Name:" />
-                <h:inputText id="name" value="#{newMember.name}" />
+                <h:outputLabel for="name" value="Login:" />
+                <h:inputText id="name" value="#{authUser.login}" />
                 <h:message for="name" errorClass="invalid" />
 
-                <h:outputLabel for="email" value="Email:" />
-                <h:inputText id="email" value="#{newMember.email}" />
-                <h:message for="email" errorClass="invalid" />
-
-                <h:outputLabel for="phoneNumber" value="Phone #:" />
-                <h:inputText id="phoneNumber"
-                    value="#{newMember.phoneNumber}" />
-                <h:message for="phoneNumber" errorClass="invalid" />
+                <h:outputLabel for="password" value="password:" />
+                <h:inputText id="password"
+                    value="#{authUser.senha}" />
+                <h:message for="password" errorClass="invalid" />
             </h:panelGrid>
 
             <p>
                 <h:panelGrid columns="2">
                     <h:commandButton id="register"
-                        action="#{memberController.register}"
+                        action="#{authController.login}"
                         value="Register" styleClass="register" />
                     <h:messages styleClass="messages"
                         errorClass="invalid" infoClass="valid"
