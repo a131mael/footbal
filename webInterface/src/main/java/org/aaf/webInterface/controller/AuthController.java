@@ -29,6 +29,8 @@ import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.model.User;
 import org.aaf.webInterface.service.MemberRegistration;
 import org.aaf.webInterface.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 
 @Model
 public class AuthController {
@@ -51,6 +53,15 @@ public class AuthController {
     }
 
     public String login() throws Exception {
+    	try {
+            UsernamePasswordToken token = new UsernamePasswordToken(authUser.getLogin(), authUser.getSenha().toCharArray(), true);
+            SecurityUtils.getSubject().login(token);
+
+            return "team";
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         return "team";
     }
 
