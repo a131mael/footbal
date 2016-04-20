@@ -45,11 +45,23 @@ public class PlayerService {
 		player.setCod(index+"");
 		player.setName("Jogador " + index);
 		player.setTeam(team);
-		player.setAgility((float) (gerador.nextDouble() * 25));
-		player.setDefense((float) (gerador.nextDouble() * 25));
-		player.setKick((float) (gerador.nextDouble() * 25));
-		player.setPass((float) (gerador.nextDouble() * 25));
-		player.setVelocity((float) (gerador.nextDouble() * 25));
+		player.setAge((float) (gerador.nextDouble() * 15)+ 18);
+		player.setAggressiveness((float) (gerador.nextDouble() * 15)+ 3);
+		player.setAgility((float) (gerador.nextDouble() * 15)+ 4);
+		player.setDecision((float) (gerador.nextDouble() * 15)+ 3);
+		player.setDisarm((float) (gerador.nextDouble() * 30)+ 3);
+		player.setGoalKeaper((float) (gerador.nextDouble() * 6)+ 1);
+		player.setHeight((float) (gerador.nextDouble() * 65)+ 150);
+		player.setImpulse((float) (gerador.nextDouble() * 15)+ 10);
+		player.setKick((float) (gerador.nextDouble() * 30)+ 3);
+		player.setMark((float) (gerador.nextDouble() * 30)+ 4);
+		player.setPass((float) (gerador.nextDouble() * 30)+ 6);
+		player.setPositioning((float) (gerador.nextDouble() * 15)+ 5);
+		player.setResistence((float) (gerador.nextDouble() * 15)+ 18);
+		player.setStrength((float) (gerador.nextDouble() * 30)+ 10);
+		player.setTechnique((float) (gerador.nextDouble() * 30)+ 5);
+		player.setVelocity((float) (gerador.nextDouble() * 30)+ 10);
+		
 		return player;
 	}
 

@@ -19,22 +19,38 @@ public class Player {
 	private Long id;
 
 	private String name;
+	private float height;
+	private float age;
+	
+	@ManyToOne
+	private Country country;
 
 	private String cod;
 
 	@ManyToOne
 	private Team team;
 	
+//	Fisicas
 	private float agility;
-	
 	private float velocity;
+	private float resistence;
+	private float impulse;
+	private float strength;
 	
-	private float defense;
-	
-	private float kick;
-	
+//	Tecnicas
 	private float pass;
-
+	private float kick;
+	private float disarm;
+	private float technique;
+	private float mark;
+	
+	//Psico
+	private float positioning;
+	private float decision;
+	private float aggressiveness;
+	private float goalKeaper;
+	private float workIndex;
+	
 	public String getCod() {
 		return cod;
 	}
@@ -83,14 +99,6 @@ public class Player {
 		this.velocity = velocity;
 	}
 
-	public float getDefense() {
-		return defense;
-	}
-
-	public void setDefense(float defense) {
-		this.defense = defense;
-	}
-
 	public float getKick() {
 		return kick;
 	}
@@ -105,6 +113,110 @@ public class Player {
 
 	public void setPass(float pass) {
 		this.pass = pass;
+	}
+
+	public float getResistence() {
+		return resistence;
+	}
+
+	public void setResistence(float resistence) {
+		this.resistence = resistence;
+	}
+
+	public float getImpulse() {
+		return impulse;
+	}
+
+	public void setImpulse(float impulse) {
+		this.impulse = impulse;
+	}
+
+	public float getStrength() {
+		return strength;
+	}
+
+	public void setStrength(float strength) {
+		this.strength = strength;
+	}
+
+	public float getDisarm() {
+		return disarm;
+	}
+
+	public void setDisarm(float disarm) {
+		this.disarm = disarm;
+	}
+
+	public float getTechnique() {
+		return technique;
+	}
+
+	public void setTechnique(float technique) {
+		this.technique = technique;
+	}
+
+	public float getMark() {
+		return mark;
+	}
+
+	public void setMark(float mark) {
+		this.mark = mark;
+	}
+
+	public float getPositioning() {
+		return positioning;
+	}
+
+	public void setPositioning(float positioning) {
+		this.positioning = positioning;
+	}
+
+	public float getDecision() {
+		return decision;
+	}
+
+	public void setDecision(float decision) {
+		this.decision = decision;
+	}
+
+	public float getAggressiveness() {
+		return aggressiveness;
+	}
+
+	public void setAggressiveness(float aggressiveness) {
+		this.aggressiveness = aggressiveness;
+	}
+
+	public float getGoalKeaper() {
+		return goalKeaper;
+	}
+
+	public void setGoalKeaper(float goalKeaper) {
+		this.goalKeaper = goalKeaper;
+	}
+
+	public float getWorkIndex() {
+		return workIndex;
+	}
+
+	public void setWorkIndex(float workIndex) {
+		this.workIndex = workIndex;
+	}
+
+	public float getHeight() {
+		return height;
+	}
+
+	public void setHeight(float height) {
+		this.height = height;
+	}
+
+	public float getAge() {
+		return age;
+	}
+
+	public void setAge(float age) {
+		this.age = age;
 	}
 
 }
