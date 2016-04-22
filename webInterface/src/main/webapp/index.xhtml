@@ -16,76 +16,73 @@
     limitations under the License.
 -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    template="/WEB-INF/templates/default.xhtml">
-    <ui:define name="content">
-        <h1>Welcome to WildFly!</h1>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:shiro="http://shiro.apache.org/tags">
+	<ui:define name="content">
 
-        <div>
-            <p>You have successfully deployed a Java EE 7 Enterprise
-                Application.</p>
-            <h3>Your application can run on:</h3>
-            <img src="resources/gfx/wildfly_400x130.jpg" />
-        </div>
+		<h1>Welcome to WildFly!</h1>
 
-        <h:form id="reg">
-            <h2>Login</h2>
-            <h:panelGrid columns="3" columnClasses="titleCell">
-                <h:outputLabel for="name" value="Login:" />
-                <h:inputText id="name" value="#{authUser.login}" />
-                <h:message for="name" errorClass="invalid" />
+		<div>
+			<p>You have successfully deployed a Java EE 7 Enterprise
+				Application.</p>
+			<h3>Your application can run on:</h3>
+			<img src="resources/gfx/wildfly_400x130.jpg" />
+		</div>
 
-                <h:outputLabel for="password" value="password:" />
-                <h:inputText id="password"
-                    value="#{authUser.senha}" />
-                <h:message for="password" errorClass="invalid" />
-            </h:panelGrid>
+		<h:form id="reg">
+			<h2>Login</h2>
+			<h:panelGrid columns="3" columnClasses="titleCell">
+				<h:outputLabel for="name" value="Login:" />
+				<h:inputText id="name" value="#{authUser.login}" />
+				<h:message for="name" errorClass="invalid" />
 
-            <p>
-                <h:panelGrid columns="2">
-                    <h:commandButton id="register"
-                        action="#{authController.login}"
-                        value="Register" styleClass="register" />
-                    <h:messages styleClass="messages"
-                        errorClass="invalid" infoClass="valid"
-                        warnClass="warning" globalOnly="true" />
-                </h:panelGrid>
-            </p>
-        </h:form>
-        <h2>Members</h2>
-        <h:panelGroup rendered="#{empty members}">
-            <em>No registered members.</em>
-        </h:panelGroup>
-        <h:dataTable var="_member" value="#{members}"
-            rendered="#{not empty members}"
-            styleClass="simpletablestyle">
-            <h:column>
-                <f:facet name="header">Id</f:facet>
+				<h:outputLabel for="password" value="password:" />
+				<h:inputText id="password" value="#{authUser.senha}" />
+				<h:message for="password" errorClass="invalid" />
+			</h:panelGrid>
+
+			<p>
+				<h:panelGrid columns="2">
+					<h:commandButton id="register" action="#{authController.login}"
+						value="Register" styleClass="register" />
+					<h:messages styleClass="messages" errorClass="invalid"
+						infoClass="valid" warnClass="warning" globalOnly="true" />
+				</h:panelGrid>
+			</p>
+		</h:form>
+		<h2>Members</h2>
+		<h:panelGroup rendered="#{empty members}">
+			<em>No registered members.</em>
+		</h:panelGroup>
+		<h:dataTable var="_member" value="#{members}"
+			rendered="#{not empty members}" styleClass="simpletablestyle">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
                 #{_member.id}
             </h:column>
-            <h:column>
-                <f:facet name="header">Name</f:facet>
+			<h:column>
+				<f:facet name="header">Name</f:facet>
                 #{_member.name}
             </h:column>
-            <h:column>
-                <f:facet name="header">Email</f:facet>
+			<h:column>
+				<f:facet name="header">Email</f:facet>
                 #{_member.email}
             </h:column>
-            <h:column>
-                <f:facet name="header">Phone #</f:facet>
+			<h:column>
+				<f:facet name="header">Phone #</f:facet>
                 #{_member.phoneNumber}
             </h:column>
-            <h:column>
-                <f:facet name="header">REST URL</f:facet>
-                <a
-                    href="#{request.contextPath}/rest/members/#{_member.id}">/rest/members/#{_member.id}</a>
-            </h:column>
-            <f:facet name="footer">
+			<h:column>
+				<f:facet name="header">REST URL</f:facet>
+				<a href="#{request.contextPath}/rest/members/#{_member.id}">/rest/members/#{_member.id}</a>
+			</h:column>
+			<f:facet name="footer">
             REST URL for all members: <a
-                    href="#{request.contextPath}/rest/members">/rest/members</a>
-            </f:facet>
-        </h:dataTable>
-    </ui:define>
+					href="#{request.contextPath}/rest/members">/rest/members</a>
+			</f:facet>
+		</h:dataTable>
+	</ui:define>
 </ui:composition>

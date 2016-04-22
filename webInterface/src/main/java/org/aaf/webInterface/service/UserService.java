@@ -16,6 +16,7 @@
  */
 package org.aaf.webInterface.service;
 
+import org.aaf.webInterface.model.League;
 import org.aaf.webInterface.model.Member;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.model.User;
@@ -23,7 +24,11 @@ import org.aaf.webInterface.model.User;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
+import javax.jws.soap.SOAPBinding.Use;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import java.util.List;
 import java.util.logging.Logger;
 
 @Stateless
@@ -40,6 +45,9 @@ public class UserService {
     
     @Inject
     private TeamService teamService;
+    
+
+    
 
     public void register(User user) throws Exception {
     	log.info("Registering " + user.getName());
@@ -55,4 +63,14 @@ public class UserService {
         user.setTeam(team);
        // memberEventSrc.fire(user);
     }
+
+	public User login(User m) {
+		StringBuilder query = new StringBuilder();
+    	query.append("db.User.find({'login': '");
+    	query.append(m.getLogin());
+    	query.append("'})");
+		Query query2 = em.createNativeQuery(query.toString(), User.class);
+		User user = (User) query2.getSingleResult();
+		return user;
+	}
 }

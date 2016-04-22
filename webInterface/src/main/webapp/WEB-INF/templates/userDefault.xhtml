@@ -5,9 +5,32 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>webInterface</title>
+	<title>Angular</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<h:outputStylesheet name="css/screen.css" />
+
+	<!-- For minification, comment out this link -->
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
+	<!-- For minification, uncomment out this file -->
+	<!--<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css"/>-->
+	
+	<!-- For minification, uncomment out this file -->
+	<!--<link rel="stylesheet" href="css/screen.min.css"/>-->
+
+	<!-- Set viewport scaling and zoom features -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- For minification, comment out this file -->
+	<script type="text/javascript" src="js/libs/jquery-2.0.3.js"></script>
+	<!-- For minification, uncomment out this file -->
+	<!--<script type="text/javascript" src="js/libs/jquery-2.0.3.min.js"></script>-->
+
+	<!-- For minification, comment out this file -->
+	<script type="text/javascript" src="js/libs/jquery.mobile-1.4.2.js"></script>
+	<!-- For minification, uncomment out this file -->
+	<!--<script type="text/javascript" src="js/libs/jquery.mobile-1.4.2.min.js"></script>-->
+	
+	<link rel="stylesheet" type="text/css" href="css/styleMenu.css"/>
 </h:head>
 <h:body>
 	<div id="container">
@@ -21,19 +44,36 @@
          </ui:insert>
 		</div>
 
-		<div id="aside" style="width: 5px">
-			<h:form id="formReg" style="border:none; width: 4px">
-			<a href="webInterface../../pages/team/players.xhtml"><img src="resources/img/ico/home.png" /> </a>
-			<a href="#signup">	<img src="webInterface../../resources/img/ico/users.png" /></a>
-			<a href="#signup"> <img src="webInterface../../resources/img/ico/favorite.png" /></a>
-
-			</h:form>
-		</div>
-
 		<div id="footer">
-			<p>
-				This project was generated from a Maven archetype from WildFly.<br />
-			</p>
+
+
+			<div>
+				<div>
+					<nav>
+					<ul>
+						<li>
+						<a href="http://www.apple.com/" title="Apple"><img
+								src="/resources/img/logo.png"  /></a></li>
+						<li><a href="/webInterface/pages/team/index.xhtml"  title="Store">Time</a></li>
+						<li><a href="/webInterface/pages/team/players.xhtml" title="Store">Jogadores</a></li>
+						<li><a href="../webInterface/pages/team/index.xhtml" title="Store">Jogas</a></li>
+					</ul>
+					</nav>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+			<p>Football Manager is the best game in the world</p>
 		</div>
 	</div>
 </h:body>

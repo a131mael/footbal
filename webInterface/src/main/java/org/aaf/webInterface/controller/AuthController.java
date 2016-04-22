@@ -16,6 +16,9 @@
  */
 package org.aaf.webInterface.controller;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
@@ -24,10 +27,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.aaf.webInterface.model.Member;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.model.User;
-import org.aaf.webInterface.service.MemberRegistration;
 import org.aaf.webInterface.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -59,10 +60,11 @@ public class AuthController {
 
             return "team";
         } catch (Exception ex) {
+        	FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Registration Fail");
+			facesContext.addMessage(null, m);
             ex.printStackTrace();
+            return "erro";
         }
-
-        return "team";
     }
 
 	public User getAuthUser() {
@@ -73,6 +75,17 @@ public class AuthController {
 		this.authUser = authUser;
 	}
     
+	public User getLoggedUser() {
+        try {
+            if (SecurityUtils.getSubject().getPrincipal() != null) {
+                User user = (User) SecurityUtils.getSubject().getPrincipal();
+                return user;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(MemberController.class.getSimpleName()).log(Level.WARNING, null, ex);
+        }
 
+        return null;
+    }
 
 }

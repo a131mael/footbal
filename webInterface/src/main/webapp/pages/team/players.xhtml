@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    template="/WEB-INF/templates/userDefault.xhtml">
-    
-    <ui:define name="content">
-        
-        
-        players
-    </ui:define>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/userDefault.xhtml">
+
+	<ui:define name="content">
+
+		<div>
+			<ui:repeat var="player" value="#{playerController.teamPlayers}"
+				varStatus="status">
+				<center>
+					<h:panelGrid columns="3" width="90%">
+						<h:outputLabel value="#{player.name}" />
+						<h:outputLabel value="#{player.age}" />
+						<h:outputLabel value="#{player.height}" />
+					</h:panelGrid>
+					<h:panelGrid columns="3" width="90%">
+						<h:outputLabel value="#{player.aggressiveness}" />
+						<h:outputLabel value="#{player.agility}" />
+						<h:outputLabel value="#{player.decision}" />
+						<h:outputLabel value="#{player.disarm}" />
+						<h:outputLabel value="#{player.goalKeaper}" />
+					</h:panelGrid>
+				</center>
+				
+				
+				
+				<br />
+			</ui:repeat>
+
+		</div>
+
+	</ui:define>
 </ui:composition>
