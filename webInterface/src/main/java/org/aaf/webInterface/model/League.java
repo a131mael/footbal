@@ -1,5 +1,7 @@
 package org.aaf.webInterface.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +10,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class League {
+public class League implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8514629038725047970L;
 
 	@Id
 	@GeneratedValue(generator = "GENERATE_League", strategy = GenerationType.SEQUENCE)

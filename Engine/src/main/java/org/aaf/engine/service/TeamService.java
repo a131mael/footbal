@@ -29,12 +29,19 @@ public class TeamService {
 	@Inject
 	private PlayerService playerService;
 
+	@Inject
+	private MatchService matchService;
+
+	
 	public void register(League league) throws Exception {
 		em.persist(league);
+		
 
 		for (int i = 1; i <= 8; i++) {
 			playerService.register(createTeam(i, league));
 		}
+		
+		matchService.createMatches(league.getCountry());
 		log.info("Registering " + league.getName());
 	}
 

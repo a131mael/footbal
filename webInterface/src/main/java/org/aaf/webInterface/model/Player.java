@@ -1,17 +1,21 @@
 package org.aaf.webInterface.model;
 
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Player {
+public class Player implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8458130884793236986L;
 
 	@Id
 	@GeneratedValue(generator = "GENERATE_Player", strategy = GenerationType.SEQUENCE)
@@ -217,6 +221,14 @@ public class Player {
 
 	public void setAge(float age) {
 		this.age = age;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 }

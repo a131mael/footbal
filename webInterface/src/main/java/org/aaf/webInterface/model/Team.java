@@ -1,6 +1,7 @@
 package org.aaf.webInterface.model;
 
-import javax.persistence.CascadeType;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +11,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Team {
+public class Team implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3369305314854817888L;
 
 	@Id
 	@GeneratedValue(generator = "GENERATE_Team", strategy = GenerationType.SEQUENCE)

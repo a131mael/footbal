@@ -11,23 +11,94 @@
 		<div>
 			<ui:repeat var="player" value="#{playerController.teamPlayers}"
 				varStatus="status">
-				<center>
-					<h:panelGrid columns="3" width="90%">
+				<h:panelGrid columns="8" > 
+						<img
+							src="../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
+							width="16px" height="16px" alt="#{player.country.name}" />
 						<h:outputLabel value="#{player.name}" />
-						<h:outputLabel value="#{player.age}" />
-						<h:outputLabel value="#{player.height}" />
+						<h:outputLabel value="#{playerHability.getAge(player.age)}" />
+						<h:outputText value="#{msg['player.age.yearOld']} "  />
+						<h:outputText value=" " style="padding-left: 30px"/>
+						<h:outputText value="#{msg['player.height']}: " />
+						<h:outputLabel value="#{playerHability.getHeigth(player.height)}" style="margin-left:2px"/>
 					</h:panelGrid>
-					<h:panelGrid columns="3" width="90%">
-						<h:outputLabel value="#{player.aggressiveness}" />
-						<h:outputLabel value="#{player.agility}" />
-						<h:outputLabel value="#{player.decision}" />
-						<h:outputLabel value="#{player.disarm}" />
-						<h:outputLabel value="#{player.goalKeaper}" />
+				<center>
+					
+					<hr />
+
+					<h:panelGrid columns="3">
+						<h:panelGrid columns="2" title="Bodily">
+
+							<h:outputLabel value="#{msg['player.agility']}: " />
+							<h:outputText
+								value="#{playerHability.getHability(player.agility)}" />
+
+							<h:outputLabel value="#{msg['player.impulse']}: " />
+							<h:outputText
+								value="#{playerHability.getHability(player.impulse)}" />
+
+							<h:outputLabel value="#{msg['player.resistence']}: " />
+							<h:outputText
+								value="#{playerHability.getHability(player.resistence)}" />
+
+							<h:outputLabel value="#{msg['player.strength']}: " />
+							<h:outputText
+								value="#{playerHability.getHability(player.strength)}" />
+
+
+							<h:outputLabel value="#{msg['player.velocity']}: " />
+							<h:outputText
+								value="#{playerHability.getHability(player.velocity)}" />
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" title="Technical">
+							<h:outputLabel value="#{msg['player.disarm']}" />
+							<h:outputText
+								value="#{playerHability.getHability(player.disarm)}" />
+
+							<h:outputLabel value="#{msg['player.mark']}: " />
+							<h:outputText value="#{playerHability.getHability(player.mark)}" />
+
+							<h:outputLabel value="#{msg['player.kick']}: " />
+							<h:outputText value="#{playerHability.getHability(player.kick)}" />
+
+							<h:outputLabel value="#{msg['player.pass']}: " />
+							<h:outputText value="#{playerHability.getHability(player.pass)}" />
+
+							<h:outputLabel value="#{msg['player.technique']}: " />
+							<h:outputText
+								value="#{playerHability.getHability(player.technique)}" />
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" title="Psychological">
+							<h:outputLabel value="#{msg['player.aggressiveness']}:  " />
+							<h:outputText
+								value="#{playerHability.getHability(player.aggressiveness)}" />
+
+							<h:outputLabel value="#{msg['player.decision']}: " />
+							<h:outputText
+								value="#{playerHability.getHability(player.decision)}" />
+
+							<h:outputLabel value="#{msg['player.goalKeaper']}: " />
+							<h:outputText
+								value="#{playerHability.getHability(player.goalKeaper)}" />
+
+							<h:outputLabel value="#{msg['player.positioning']}: " />
+							<h:outputText
+								value="#{playerHability.getHability(player.positioning)}" />
+
+							<h:outputLabel value="#{msg['player.workIndex']}: " />
+							<h:outputText
+								value="#{playerHability.getHability(player.workIndex)}" />
+						</h:panelGrid>
+
 					</h:panelGrid>
 				</center>
-				
-				
-				
+
+
+
 				<br />
 			</ui:repeat>
 

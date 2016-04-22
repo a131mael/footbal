@@ -1,15 +1,21 @@
 package org.aaf.webInterface.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class User {
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4812515119488608179L;
 
 	@Id
 	@GeneratedValue(generator = "GENERATE_User", strategy = GenerationType.SEQUENCE)

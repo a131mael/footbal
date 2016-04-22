@@ -31,6 +31,7 @@
     <class>org.aaf.engine.model.User</class>
     <class>org.aaf.engine.model.Property</class>
     <class>java.lang.Long</class>
+    <class>org.aaf.engine.model.Match</class>
     
 <!--     <exclude-unlisted-classes>true</exclude-unlisted-classes> -->
     <properties>
