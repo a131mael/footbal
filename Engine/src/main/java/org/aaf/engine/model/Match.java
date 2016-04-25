@@ -15,9 +15,12 @@ public class Match {
 	@SequenceGenerator(name = "GENERATE_Match", sequenceName = "Match_pk_seq", allocationSize = 1)
 	private Long id;
 
-	private String name;
 
 	private String cod;
+	
+	private String session;
+	
+	private String week;
 
 	@ManyToOne
 	private Team homeTeam;
@@ -28,14 +31,8 @@ public class Match {
 	private int golasHomeTeam;
 	
 	private int golasVisitTeam;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
+	private int round;
 
 	public Long getId() {
 		return id;
@@ -84,5 +81,30 @@ public class Match {
 	public void setCod(String cod) {
 		this.cod = cod;
 	}
+
+	public int getRound() {
+		return round;
+	}
+
+	public void setRound(int round) {
+		this.round = round;
+	}
+
+	public String getSession() {
+		return session;
+	}
+
+	public void setSession(String session) {
+		this.session = session;
+	}
+
+	public String getWeek() {
+		return week;
+	}
+
+	public void setWeek(String week) {
+		this.week = week;
+	}
+
 
 }

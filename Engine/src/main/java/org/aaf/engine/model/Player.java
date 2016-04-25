@@ -21,6 +21,7 @@ public class Player {
 	private String name;
 	private float height;
 	private float age;
+	private Float salary;
 	
 	@ManyToOne
 	private Country country;
@@ -225,6 +226,14 @@ public class Player {
 
 	public void setCountry(Country country) {
 		this.country = country;
+	}
+
+	public Float getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Float salary) {
+		this.salary = salary;
 	}
 
 }

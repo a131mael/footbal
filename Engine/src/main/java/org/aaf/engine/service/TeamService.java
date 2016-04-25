@@ -41,7 +41,6 @@ public class TeamService {
 			playerService.register(createTeam(i, league));
 		}
 		
-		matchService.createMatches(league.getCountry());
 		log.info("Registering " + league.getName());
 	}
 
@@ -55,6 +54,7 @@ public class TeamService {
 		Team team = new Team();
 		team.setCod(index + "");
 		team.setName("Time " + index);
+		team.setCashBox(500000D);
 		team.setLeague(league);
 		return team;
 	}

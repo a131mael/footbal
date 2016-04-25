@@ -19,6 +19,8 @@ public class Team {
 	private String name;
 
 	private String cod;
+	
+	private Double cashBox;
 
 	@ManyToOne
 	private League league;
@@ -64,6 +66,14 @@ public class Team {
 
 	public void setOwner(User owner) {
 		this.owner = owner;
+	}
+
+	public Double getCashBox() {
+		return cashBox;
+	}
+
+	public void setCashBox(Double cashBox) {
+		this.cashBox = cashBox;
 	}
 
 }

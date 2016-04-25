@@ -17,6 +17,11 @@ public class Country {
     private String name;
  
     private String cod;
+    
+    private int session;
+    
+    private int week;
+
 
 	public String getCod() {
 		return cod;
@@ -41,4 +46,22 @@ public class Country {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public int getSession() {
+		return session;
+	}
+
+	public void setSession(int session) {
+		this.session = session;
+	}
+
+	public int getWeek() {
+		return week;
+	}
+
+	public void setWeek(int week) {
+		this.week = week;
+	}
+
+	
 }

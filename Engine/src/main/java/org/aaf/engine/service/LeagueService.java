@@ -22,6 +22,9 @@ public class LeagueService {
 
 	@Inject
 	private TeamService teamService;
+	
+	@Inject
+	private MatchService matchService;
 
 	public void register(Country country) throws Exception {
 
@@ -41,11 +44,12 @@ public class LeagueService {
 			for(int i = 1 ; i<=37; i++){
 				teamService.register(createLeague(i, country));	;
 			}
+			matchService.createMatches(country.getCountry());
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}	
 
 	private League createLeague(int index, CountryDTO country) {
 

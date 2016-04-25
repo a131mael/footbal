@@ -43,6 +43,13 @@ public class MatchService {
 		List<League> leagues = (List<League>) query.getResultList();
 
 		StringBuilder sqlTeamLeague = new StringBuilder();
+		
+		List<Integer> index = new ArrayList<>();
+		for(int i =0; i<8;i++){ //8 teams per League, if more, chance the number
+			index.add(i);
+		}
+		int index2Group = index.size()/2;
+		
 		for (League l : leagues) {
 			sqlTeamLeague.append("db.Team.find({'league_id': ");
 			sqlTeamLeague.append(l.getId());
@@ -50,30 +57,47 @@ public class MatchService {
 
 			Query queryTeans = em.createNativeQuery(sqlTeamLeague.toString(), Team.class);
 			List<Team> teans = queryTeans.getResultList();
-			for (int j = 0; j < teans.size(); j++) { // rodadas
-				System.out.println("Rodada  : " + j);
-				for (int i = 0; i < teans.size() - 1; i++) {// Time
-					createMatch(teans.get(i), teans.get(adjustIndex(i + 1 + j, teans.size()-1)));
+			
+			for(int j=0; j<teans.size();j++){
+				System.out.println("Rodada " + j);
+				for(int i=0;i<teans.size()/2;i++){
+			
+					createMatch(teans.get(i), teans.get(adjustIndex(i + 1 + j, teans.size()-1)), i);
+					System.out.println(teans.get(index.get(i)) +" x " + teans.get(index.get(i+index2Group)));
+					
 				}
+				escalonar(index);
 			}
+			
+			sqlTeamLeague = new StringBuilder();
 		}
 	}
 
-	private int adjustIndex(int index, int maxIdex) {
+	private static void escalonar(List<Integer> index) {
+		int finalIndex = index.size()-1;
+		List<Integer> indexClone = new ArrayList<>();
+		indexClone.addAll(index);
+		for(int i=1; i<=finalIndex;i++){
+			index.set(i, indexClone.get(adjustIndex(i+1,finalIndex)));
+		}
+	}
+
+	private static int adjustIndex(int index, int maxIdex) {
 		if (index > maxIdex) {
-			return index - maxIdex;
+			return 1;
 		}
 		return index;
 	}
 
-	private void createMatch(Team team, Team team2) {
+
+	private void createMatch(Team team, Team team2, int round) {
 		Match match = new Match();
 		match.setHomeTeam(team);
 		match.setVisitTeam(team2);
-		
-		System.out.println("Partida : " + team.getCod() + " - " + team2.getCod());
-		
-//		em.persist(match);
+		match.setRound(round);
+		match.setSession("0");
+		match.setWeek(String.valueOf(round));
+		em.persist(match);
 
 	}
 
