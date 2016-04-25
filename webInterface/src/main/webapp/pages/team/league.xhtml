@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/userDefault.xhtml">
+
+	<ui:define name="content">
+
+		<div>
+			<ui:repeat var="match" value="#{playerController.teamPlayers}"
+				varStatus="status">
+				<h:panelGrid columns="8">
+					<h:outputLabel value="#{match.id}" />
+				</h:panelGrid>
+
+
+				<br />
+			</ui:repeat>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

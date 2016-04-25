@@ -1,5 +1,7 @@
 package org.aaf.webInterface.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,27 +17,25 @@ public class Match {
 	@SequenceGenerator(name = "GENERATE_Match", sequenceName = "Match_pk_seq", allocationSize = 1)
 	private Long id;
 
-	private String name;
+	private Date date;
 
 	private String cod;
 
+	private String session;
+
+	private String week;
+
 	@ManyToOne
 	private Team homeTeam;
-	
+
 	@ManyToOne
 	private Team visitTeam;
-	
+
 	private int golasHomeTeam;
-	
+
 	private int golasVisitTeam;
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	private int round;
 
 	public Long getId() {
 		return id;
@@ -84,5 +84,38 @@ public class Match {
 	public void setCod(String cod) {
 		this.cod = cod;
 	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public int getRound() {
+		return round;
+	}
+
+	public void setRound(int round) {
+		this.round = round;
+	}
+
+	public String getSession() {
+		return session;
+	}
+
+	public void setSession(String session) {
+		this.session = session;
+	}
+
+	public String getWeek() {
+		return week;
+	}
+
+	public void setWeek(String week) {
+		this.week = week;
+	}
+
 
 }

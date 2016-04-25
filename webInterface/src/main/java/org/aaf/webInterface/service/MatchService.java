@@ -38,11 +38,31 @@ public class MatchService {
 
 
 	@SuppressWarnings("unchecked")
-	public List<Match> getMatches(Long id) {
+	public List<Match> getLastMatches(Long id) {
 		StringBuilder sql = new StringBuilder();
-    	sql.append("db.Match.find({'team_id': ");
+    	sql.append("db.Match.find({ '$or':[  {'visitTeam_id': ");
     	sql.append(id);
-    	sql.append("})");
+    	sql.append("},{'homeTeam_id' : ");
+    	sql.append(id);
+    	sql.append("}]})");
+//    	sql.append(".sort( { 'round': 1 } )");
+		Query query = em.createNativeQuery(sql.toString(), Match.class);
+		return  query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Match> getMatches(Long id,int session, int week) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("db.Match.find({ 'week':'");
+		sql.append(week);
+		sql.append("', 'session':'");
+		sql.append(session);
+    	sql.append("', '$or':[  {'visitTeam_id': ");
+    	sql.append(id);
+    	sql.append("},{'homeTeam_id' : ");
+    	sql.append(id);
+    	sql.append("}]})");
+//    	sql.append(".sort( { 'round': 1 } )");
 		Query query = em.createNativeQuery(sql.toString(), Match.class);
 		return  query.getResultList();
 	}

@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    template="/WEB-INF/templates/userDefault.xhtml">
-    
-    <ui:define name="content">
-    <div>
-    Time
-    </div>
-    
-    </ui:define>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/userDefault.xhtml">
+
+	<ui:define name="content">
+		<div>
+			<h:panelGrid columns="2" width="100%">
+				<h:panelGrid width="50%">
+					<img
+						src=" ../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
+						width="45px" height="45px" alt="#{player.country.name}" />
+
+				</h:panelGrid>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="#{authController.loggedUser.team.name}" />
+					<img
+						src=" ../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
+						width="16px" height="16px" alt="#{player.country.name}" />
+
+					<h:outputLabel value="#{msg['team.league']}" />
+					<h:outputText value="#{authController.loggedUser.team.league.name}" />
+					<h:outputLabel value="#{msg['country']}" />
+					<h:outputText
+						value="#{authController.loggedUser.team.league.country.name}" />
+					<hr />
+				</h:panelGrid>
+				<ui:repeat var="match" value="#{matchController.lastTeamMatchs}"
+					varStatus="status">
+					
+					<h:panelGrid columns="4">
+						<h:outputLabel value="#{match.round}" />
+						<h:outputLabel value="#{match.homeTeam.name}" />
+						<h:outputLabel value=" - " />
+						<h:outputLabel value="#{match.visitTeam.name}" />
+					</h:panelGrid>
+				</ui:repeat>
+
+
+
+			</h:panelGrid>
+		</div>
+
+	</ui:define>
 </ui:composition>

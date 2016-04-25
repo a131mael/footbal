@@ -16,45 +16,22 @@
  */
 package org.aaf.webInterface.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import org.aaf.webInterface.model.Match;
-import org.aaf.webInterface.model.Player;
-import org.aaf.webInterface.service.MatchService;
-import org.aaf.webInterface.service.PlayerService;
+import org.aaf.webInterface.service.TeamService;
 
 @Model
-public class MatchController extends AuthController {
+public class TeamController extends AuthController{
 
-	@Inject
-	private FacesContext facesContext;
+    @Inject
+    private FacesContext facesContext;
 
-	@Inject
-	private MatchService matchService;
-
-	public List<Match> getTeamMatchs(int round) throws Exception {
-		return matchService.getMatches(getLoggedUser().getId(),
-				getLoggedUser().getTeam().getLeague().getCountry().getSession(), round);
-
-	}
-
-	public List<Match> getLastTeamMatchs() throws Exception {
-		return matchService.getLastMatches(getLoggedUser().getId());
-
-	}
-
-	public List<Integer> getWeeks() throws Exception {
-		List<Integer> semanas = new ArrayList<Integer>();
-		for (int i = 0; i < 8; i++) {
-			semanas.add(i);
-		}
-		return semanas;
-
-	}
+    @Inject
+    private TeamService teamService;
+    
+    
+    
 
 }

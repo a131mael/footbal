@@ -61,7 +61,6 @@ public class UserService {
 
         em.persist(team);
         user.setTeam(team);
-       // memberEventSrc.fire(user);
     }
 
 	public User login(User m) {

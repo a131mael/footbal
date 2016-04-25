@@ -12,6 +12,7 @@
     <class>org.aaf.webInterface.model.Player</class>
     <class>org.aaf.webInterface.model.Team</class>
     <class>org.aaf.webInterface.model.User</class>
+    <class>org.aaf.webInterface.model.Match</class>
     
     <properties>
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>

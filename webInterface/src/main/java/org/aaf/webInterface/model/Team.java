@@ -24,7 +24,7 @@ public class Team implements Serializable{
 	private Long id;
 
 	private String name;
-
+	
 	private String cod;
 
 	@ManyToOne
@@ -32,6 +32,8 @@ public class Team implements Serializable{
 	
 	@OneToOne
 	private User owner;
+	
+	private Double cashBox;
 
 	public String getCod() {
 		return cod;
@@ -71,6 +73,14 @@ public class Team implements Serializable{
 
 	public void setOwner(User owner) {
 		this.owner = owner;
+	}
+
+	public Double getCashBox() {
+		return cashBox;
+	}
+
+	public void setCashBox(Double cashBox) {
+		this.cashBox = cashBox;
 	}
 
 }
