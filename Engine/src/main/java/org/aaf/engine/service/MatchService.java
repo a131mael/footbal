@@ -68,6 +68,17 @@ public class MatchService {
 				}
 				escalonar(index);
 			}
+			teans = invertArray(teans);
+			for(int j=0; j<teans.size();j++){
+				System.out.println("Rodada " + j);
+				for(int i=0;i<teans.size()/2;i++){
+			
+					createMatch(teans.get(i), teans.get(adjustIndex(i + 1 + j, teans.size()-1)), i);
+					System.out.println(teans.get(index.get(i)) +" x " + teans.get(index.get(i+index2Group)));
+					
+				}
+				escalonar(index);
+			}
 			
 			sqlTeamLeague = new StringBuilder();
 		}
@@ -89,6 +100,14 @@ public class MatchService {
 		return index;
 	}
 
+	private static List<Team> invertArray(List<Team> array){
+		List<Team> clone = new ArrayList<>();
+		for(Team element: array){
+			clone.add(0, element);
+		}
+		
+		return clone;
+	}
 
 	private void createMatch(Team team, Team team2, int round) {
 		Match match = new Match();

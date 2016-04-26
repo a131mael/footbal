@@ -18,12 +18,61 @@ public class GerarCampeonato {
 		times.add("G");
 		times.add("H");
 		
+		List<Integer> index = new ArrayList<>();
+		for(int i =0; i<8;i++){ //8 teams per League, if more, chance the number
+			index.add(i);
+		}
+		int index2Group = index.size()/2;
 		
 		
+		
+		for(int j=0; j<times.size();j++){
+			System.out.println("Rodada " + j);
+			for(int i=0;i<times.size()/2;i++){
+		
+				System.out.println(times.get(index.get(i)) +" x " + times.get(index.get(i+index2Group)));
+				
+			}
+			escalonar(index);
+		}
+		
+		times = invertArray(times);
+		for(int j=0; j<times.size();j++){
+			System.out.println("Rodada " + (j+6));
+			for(int i=0;i<times.size()/2;i++){
+		
+				System.out.println(times.get(index.get(i)) +" x " + times.get(index.get(i+index2Group)));
+				
+			}
+			escalonar(index);
+		}
 		
 		
 	}
 	
 	
+	private static void escalonar(List<Integer> index) {
+		int finalIndex = index.size()-1;
+		List<Integer> indexClone = new ArrayList<>();
+		indexClone.addAll(index);
+		for(int i=1; i<=finalIndex;i++){
+			index.set(i, indexClone.get(adjustIndex(i+1,finalIndex)));
+		}
+	}
+
+	private static int adjustIndex(int index, int maxIdex) {
+		if (index > maxIdex) {
+			return 1;
+		}
+		return index;
+	}
+	private static List<String> invertArray(List<String> array){
+		List<String> clone = new ArrayList<>();
+		for(String element: array){
+			clone.add(0, element);
+		}
+		
+		return clone;
+	}
 
 }
