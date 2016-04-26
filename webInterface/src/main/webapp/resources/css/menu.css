@@ -1,0 +1,12 @@
+#menu { position: absolute; left: 10px; /*posição à direita*/top: 10px; /*posição abaixo*/width: 180px;}
+
+#menu ul {list-style-type: none; /*remove o marcador*/margin: 0; /*remove o recuo IE e Opera*/padding: 0; /*remove o recuo Mozilla e NN*/font: bold 16px arial, helvetica, sans-serif;}
+
+#menu li { margin-bottom:1px; }
+
+#menu a {display: block;padding: 1px 0 1px 25px;border: 1px solid #000000;width: 180px;background-color: #339966;color: #FFFFFF;text-decoration: none;background-image: url(fundo_1.JPG);voice-family: "\"}\"";  /*Box Model Hack*/voice-family:inherit;width:153px;}
+
+#menu a {width:153px;}
+
+#menu a:hover {border: 1px solid #000000;background-color:#FFFF99; background-image: url(fundo_2.JPG); color:#000000;}
+

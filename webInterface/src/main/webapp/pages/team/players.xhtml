@@ -9,6 +9,14 @@
 	<ui:define name="content">
 
 		<div>
+		<h:outputLabel for="orderBy" value="Order by: " />
+            <h:selectOneMenu id="orderBy" value="#{dropdownView.country}" style="width:150px">
+<!--                 <p:ajax listener="#{dropdownView.onCountryChange}" update="city" /> -->
+                <f:selectItem itemLabel="Hability" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{habilityEnum.enuns}" />
+            </h:selectOneMenu>
+            <br/>
+            
 			<ui:repeat var="player" value="#{playerController.teamPlayers}"
 				varStatus="status">
 				<h:panelGrid columns="8" > 
