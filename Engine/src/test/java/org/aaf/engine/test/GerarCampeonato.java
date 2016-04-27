@@ -26,7 +26,7 @@ public class GerarCampeonato {
 		
 		
 		
-		for(int j=0; j<times.size();j++){
+		for(int j=0; j<(times.size()-1)*2;j++){
 			System.out.println("Rodada " + j);
 			for(int i=0;i<times.size()/2;i++){
 		
@@ -36,16 +36,16 @@ public class GerarCampeonato {
 			escalonar(index);
 		}
 		
-		times = invertArray(times);
-		for(int j=0; j<times.size();j++){
-			System.out.println("Rodada " + (j+6));
-			for(int i=0;i<times.size()/2;i++){
-		
-				System.out.println(times.get(index.get(i)) +" x " + times.get(index.get(i+index2Group)));
-				
-			}
-			escalonar(index);
-		}
+//		times = invertArray(times);
+//		for(int l=0; l<times.size()/2;l++){
+//			System.out.println("Rodada " + (l+6));
+//			for(int k=0;k<times.size()/2;k++){
+//		
+//				System.out.println(times.get(index.get(k)) +" x " + times.get(index.get(k+index2Group)));
+//				
+//			}
+//			escalonar(index);
+//		}
 		
 		
 	}
