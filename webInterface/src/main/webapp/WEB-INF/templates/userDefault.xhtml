@@ -9,11 +9,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<h:outputStylesheet name="css/userDefault.css" />
 
+	<h:outputStylesheet name="css/menu.css" />
+
 	<!-- For minification, comment out this link -->
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
 	<!-- For minification, uncomment out this file -->
 	<!--<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css"/>-->
-	
+
 	<!-- For minification, uncomment out this file -->
 	<!--<link rel="stylesheet" href="css/screen.min.css"/>-->
 
@@ -29,7 +31,7 @@
 	<script type="text/javascript" src="js/libs/jquery.mobile-1.4.2.js"></script>
 	<!-- For minification, uncomment out this file -->
 	<!--<script type="text/javascript" src="js/libs/jquery.mobile-1.4.2.min.js"></script>-->
-	
+
 </h:head>
 <h:body>
 	<div id="container">
@@ -37,26 +39,37 @@
 			<img src="../../resources/gfx/dualbrand_logo.png" />
 		</div>
 
-		<div id="content" style="width: 778px">
+		<div id="content" style="width: 680px">
 			<ui:insert name="content">
                     [Template content will be inserted here]
          </ui:insert>
+		</div>
+
+		<div id="aside" style="width: 80px">
+			<div>
+				<ul>
+					<li><a href="/webInterface/pages/team/index.xhtml"
+						title="Store">Time</a></li>
+					<li><a href="/webInterface/pages/team/players.xhtml"
+						title="Store">Jogadores</a></li>
+					<li><a href="/webInterface/pages/team/matches.xhtml"
+						title="Store">Partidas</a></li>
+						<li><a href="/webInterface/pages/team/matches.xhtml"
+						title="Store">Economia</a></li>
+						
+						<li><a href="/webInterface/pages/team/matches.xhtml"
+						title="Store">Info</a></li>
+				</ul>
+			</div>
+
+
 		</div>
 
 		<div id="footer">
 
 			<div>
 				<div>
-					<nav>
-					<ul>
-						<li>
-						<a href="http://www.apple.com/" title="Apple"><img
-								src="../../resources/img/logo.png"  /></a></li>
-						<li><a href="/webInterface/pages/team/index.xhtml"  title="Store">Time</a></li>
-						<li><a href="/webInterface/pages/team/players.xhtml" title="Store">Jogadores</a></li>
-						<li><a href="/webInterface/pages/team/matches.xhtml" title="Store">Partidas</a></li>
-					</ul>
-					</nav>
+					<nav> </nav>
 				</div>
 			</div>
 
