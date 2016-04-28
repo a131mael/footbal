@@ -58,27 +58,27 @@ public class MatchService {
 			Query queryTeans = em.createNativeQuery(sqlTeamLeague.toString(), Team.class);
 			List<Team> teans = queryTeans.getResultList();
 			
-			for(int j=0; j<teans.size();j++){
+			for(int j=0; j< teans.size();j++){
 				System.out.println("Rodada " + j);
 				for(int i=0;i<teans.size()/2;i++){
 			
-					createMatch(teans.get(i), teans.get(adjustIndex(i + 1 + j, teans.size()-1)), i);
-					System.out.println(teans.get(index.get(i)) +" x " + teans.get(index.get(i+index2Group)));
+					createMatch(teans.get(i), teans.get(adjustIndex(i + 1 + j, teans.size()-1)), j);
+					System.out.println(teans.get(index.get(i)).getName() +" x " + teans.get(index.get(i+index2Group)).getName());
 					
 				}
 				escalonar(index);
 			}
-			teans = invertArray(teans);
-			for(int j=0; j<teans.size();j++){
-				System.out.println("Rodada " + j);
-				for(int i=0;i<teans.size()/2;i++){
-			
-					createMatch(teans.get(i), teans.get(adjustIndex(i + 1 + j, teans.size()-1)), i);
-					System.out.println(teans.get(index.get(i)) +" x " + teans.get(index.get(i+index2Group)));
-					
-				}
-				escalonar(index);
-			}
+//			teans = invertArray(teans);
+//			for(int j=0; j<teans.size();j++){
+//				System.out.println("Rodada " + j);
+//				for(int i=0;i<teans.size()/2;i++){
+//			
+//					createMatch(teans.get(i), teans.get(adjustIndex(i + 1 + j, teans.size()-1)), i);
+//					System.out.println(teans.get(index.get(i)) +" x " + teans.get(index.get(i+index2Group)));
+//					
+//				}
+//				escalonar(index);
+//			}
 			
 			sqlTeamLeague = new StringBuilder();
 		}
