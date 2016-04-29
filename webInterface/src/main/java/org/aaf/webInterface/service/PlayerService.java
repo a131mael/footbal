@@ -25,6 +25,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.aaf.webInterface.model.Player;
+import org.aaf.webInterface.util.HabilityEnum;
 
 @Stateless
 public class PlayerService {
@@ -36,11 +37,20 @@ public class PlayerService {
     private EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	public List<Player> getPlayers(Long id) {
+	public List<Player> getPlayers(Long id, String orderBy) {
 		StringBuilder sql = new StringBuilder();
     	sql.append("db.Player.find({'team_id': ");
     	sql.append(id);
-    	sql.append("})");
+    	sql.append("},");//Query
+    	sql.append("{'ignore': 0},"); //Projecao
+    	
+    	sql.append("{ 'sort': [['"); //Sorte
+//    	sql.append(orderBy);
+    	sql.append("age");
+    	sql.append("',");
+    	sql.append("'asc'");
+    	sql.append("]]}");
+    	sql.append(")");
 		Query query = em.createNativeQuery(sql.toString(), Player.class);
 		return  query.getResultList();
 		

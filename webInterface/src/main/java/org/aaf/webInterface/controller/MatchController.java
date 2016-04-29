@@ -50,7 +50,7 @@ public class MatchController extends AuthController {
 
 	public List<Integer> getWeeks() throws Exception {
 		List<Integer> semanas = new ArrayList<Integer>();
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 14; i++) {
 			semanas.add(i);
 		}
 		return semanas;

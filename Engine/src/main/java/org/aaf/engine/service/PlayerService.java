@@ -65,6 +65,8 @@ public class PlayerService {
 		player.setVelocity((float) (gerador.nextDouble() * 8)+ 5);
 		player.setWorkIndex((float) (gerador.nextDouble() * 8)+ 5);
 		
+		player.setIgnore("a");
+		
 		return player;
 	}
 

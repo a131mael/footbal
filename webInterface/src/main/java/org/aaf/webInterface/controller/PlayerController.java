@@ -24,6 +24,7 @@ import javax.inject.Inject;
 
 import org.aaf.webInterface.model.Player;
 import org.aaf.webInterface.service.PlayerService;
+import org.aaf.webInterface.util.HabilityEnum;
 
 @Model
 public class PlayerController extends AuthController{
@@ -34,9 +35,19 @@ public class PlayerController extends AuthController{
     @Inject
     private PlayerService playerService;
     
+    private HabilityEnum selectedHability;
+    
     public List<Player> getTeamPlayers() throws Exception {
-    	return playerService.getPlayers(getLoggedUser().getId());
+    	return playerService.getPlayers(getLoggedUser().getId(), selectedHability != null ?selectedHability.getLabel():null);
     
     }
+
+	public HabilityEnum getSelectedHability() {
+		return selectedHability;
+	}
+
+	public void setSelectedHability(HabilityEnum selectedHability) {
+		this.selectedHability = selectedHability;
+	}
 
 }

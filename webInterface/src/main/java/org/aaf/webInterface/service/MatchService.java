@@ -62,7 +62,7 @@ public class MatchService {
     	sql.append("},{'homeTeam_id' : ");
     	sql.append(id);
     	sql.append("}]})");
-//    	sql.append(".sort( { 'round': 1 } )");
+    	sql.append(".'sort'( { 'round': 1 } )");
 		Query query = em.createNativeQuery(sql.toString(), Match.class);
 		return  query.getResultList();
 	}
