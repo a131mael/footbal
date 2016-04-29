@@ -57,30 +57,7 @@ public class MatchService {
 
 			Query queryTeans = em.createNativeQuery(sqlTeamLeague.toString(), Team.class);
 			List<Team> teans = queryTeans.getResultList();
-			
-			for(int j=0; j< teans.size();j++){
-				System.out.println("Rodada " + j);
-				for(int i=0;i<teans.size()/2;i++){
-			
-					createMatch(teans.get(i), teans.get(adjustIndex(i + 1 + j, teans.size()-1)), j);
-					System.out.println(teans.get(index.get(i)).getName() +" x " + teans.get(index.get(i+index2Group)).getName());
-					
-				}
-				escalonar(index);
-			}
-//			teans = invertArray(teans);
-//			for(int j=0; j<teans.size();j++){
-//				System.out.println("Rodada " + j);
-//				for(int i=0;i<teans.size()/2;i++){
-//			
-//					createMatch(teans.get(i), teans.get(adjustIndex(i + 1 + j, teans.size()-1)), i);
-//					System.out.println(teans.get(index.get(i)) +" x " + teans.get(index.get(i+index2Group)));
-//					
-//				}
-//				escalonar(index);
-//			}
-			
-			sqlTeamLeague = new StringBuilder();
+
 		}
 	}
 
@@ -111,11 +88,16 @@ public class MatchService {
 
 	private void createMatch(Team team, Team team2, int round) {
 		Match match = new Match();
-		match.setHomeTeam(team);
-		match.setVisitTeam(team2);
 		match.setRound(round);
-		match.setSession("0");
 		match.setWeek(String.valueOf(round));
+		match.setSession("0");
+		if(round%2==0){
+			match.setHomeTeam(team);
+			match.setVisitTeam(team2);
+		}else{
+			match.setHomeTeam(team2);
+			match.setVisitTeam(team);
+		}
 		em.persist(match);
 
 	}
