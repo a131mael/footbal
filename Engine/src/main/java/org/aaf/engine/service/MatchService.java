@@ -57,6 +57,7 @@ public class MatchService {
 
 			Query queryTeans = em.createNativeQuery(sqlTeamLeague.toString(), Team.class);
 			List<Team> teans = queryTeans.getResultList();
+<<<<<<< HEAD
 			for(int j=0; j<(teans.size()-1)*2;j++){
 				System.out.println("Rodada " + j);
 				for(int i=0;i<teans.size()/2;i++){
@@ -69,6 +70,9 @@ public class MatchService {
 			}
 		
 			sqlTeamLeague = new StringBuilder();
+=======
+
+>>>>>>> 640c8027efeb631445f2487e5b29ca7b80167df9
 		}
 	}
 
