@@ -9,6 +9,16 @@
 	<ui:define name="content">
 
 		<div>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="#{msg['country']}: " />	
+				<h:outputText value="#{leagueController.countryLeague.name}" />
+				<h:outputLabel value="#{msg['league']}: " />	
+				<h:outputText value="#{leagueController.league.name}" />
+				<h:outputLabel value="#{msg['league.session']}: " />	
+				<h:outputText value="#{leagueController.countryLeague.session}" />
+				<h:outputLabel value="#{msg['league.week']}: " />	
+				<h:outputText value="#{leagueController.countryLeague.week}" />
+			</h:panelGrid>
 			<ui:repeat var="team" value="#{leagueController.leagueTeans}"	varStatus="status">
 				<h:panelGrid columns="1">
 					<h:outputLabel value="#{team.name}" />

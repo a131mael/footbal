@@ -19,18 +19,17 @@ package org.aaf.webInterface.controller;
 import java.util.List;
 
 import javax.enterprise.inject.Model;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import org.aaf.webInterface.model.Country;
 import org.aaf.webInterface.model.League;
-import org.aaf.webInterface.model.Player;
 import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.service.LeagueService;
-import org.aaf.webInterface.service.PlayerService;
 import org.aaf.webInterface.service.TeamService;
-import org.aaf.webInterface.util.HabilityEnum;
 
 @Model
+@SessionScoped
 public class LeagueController extends AuthController{
 
     @Inject
@@ -39,13 +38,17 @@ public class LeagueController extends AuthController{
     @Inject
     private TeamService teamService; 
     
-    private HabilityEnum selectedHability;
-    
     public List<Team> getLeagueTeans(){
     	List<Team> teams = teamService.getTeans(getLoggedUser().getTeam().getLeague().getId());
     	return teams;
+    }
     
+    public Country getCountryLeague(){
+    	return getLoggedUser().getTeam().getLeague().getCountry();
     }
 
-
+    public League getLeague(){
+    	return getLoggedUser().getTeam().getLeague();
+    }
+    
 }
