@@ -65,10 +65,12 @@ public class UserService {
 
 	public User login(User m) {
 		StringBuilder query = new StringBuilder();
-    	query.append("db.User.find({'login': '");
-    	query.append(m.getLogin());
-    	query.append("'})");
-		Query query2 = em.createNativeQuery(query.toString(), User.class);
+		query.append("SELECT u from USER u ");
+		query.append("where 1=1 ");
+		query.append("and u.login = : login ");
+		Query query2 = em.createQuery(query.toString());
+		query2.setParameter("login", m.getLogin());
+		
 		User user = (User) query2.getSingleResult();
 		return user;
 	}

@@ -36,9 +36,9 @@ public class MatchService {
     @Inject
     private EntityManager em;
 
-
+    //TODO query mongoDB
 	@SuppressWarnings("unchecked")
-	public List<Match> getLastMatches(Long id) {
+	public List<Match> getLastMatchesMongoDB(Long id) {
 		StringBuilder sql = new StringBuilder();
     	sql.append("db.Match.find({ '$or':[  {'visitTeam_id': ");
     	sql.append(id);
@@ -51,19 +51,40 @@ public class MatchService {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<Match> getLastMatches(Long id) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("Select m from Match m  ");
+		sql.append("left join m.homeTeam ht ");
+		sql.append("left join m.visitTeam vt ");
+		sql.append("where 1=1 ");
+		sql.append("and (");
+		sql.append("vt.id = :idTeam ");
+		sql.append("or ht.id = :idTeam ");
+		sql.append(") ");
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("idTeam", id);
+		return  query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Match> getMatches(Long id,int session, int week) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("db.Match.find({ 'week':'");
-		sql.append(week);
-		sql.append("', 'session':'");
-		sql.append(session);
-    	sql.append("', '$or':[  {'visitTeam_id': ");
-    	sql.append(id);
-    	sql.append("},{'homeTeam_id' : ");
-    	sql.append(id);
-    	sql.append("}]})");
-    	sql.append(".'sort'( { 'round': 1 } )");
-		Query query = em.createNativeQuery(sql.toString(), Match.class);
+		sql.append("Select m from Match m  ");
+		sql.append("left join m.homeTeam ht ");
+		sql.append("left join m.visitTeam vt ");
+		sql.append("where 1=1 ");
+		sql.append("and (");
+		sql.append("vt.id = :idTeam ");
+		sql.append("or ht.id = :idTeam ");
+		sql.append(") ");
+		sql.append("and m.session = :session");
+		sql.append("and m.week = :week");
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("session", session);
+		query.setParameter("idTeam", id);
+		query.setParameter("week", week);
 		return  query.getResultList();
+		
+		
 	}
 }

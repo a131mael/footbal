@@ -16,20 +16,17 @@
  */
 package org.aaf.webInterface.service;
 
-import org.aaf.webInterface.model.Country;
-import org.aaf.webInterface.model.League;
-import org.aaf.webInterface.model.Member;
-import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.model.User;
+import java.util.List;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import java.util.List;
-import java.util.logging.Logger;
+import org.aaf.webInterface.model.Country;
+import org.aaf.webInterface.model.League;
+import org.aaf.webInterface.model.Team;
 
 @Stateless
 public class TeamService {
@@ -42,39 +39,41 @@ public class TeamService {
 
     @SuppressWarnings("unchecked")
 	public Team getAvailableTeam(Country country) throws Exception {
-    	StringBuilder queryLeague = new StringBuilder();
-    	queryLeague.append("db.League.find({'level': ");
-    	queryLeague.append(3);
-    	queryLeague.append("})");
-		Query query2 = em.createNativeQuery(queryLeague.toString(), League.class);
-		List<League> leagues = (List<League>) query2.getResultList();
-		StringBuilder queryTeam = new StringBuilder();
-		Team team = null;
-		for(League league :leagues){
-			queryTeam.append("db.Team.find({'owner_id':{'$exists':false},");
-			queryTeam.append("'league_id':");
-			queryTeam.append(league.getId());
-			queryTeam.append(" })");
-			
-			Query query = em.createNativeQuery(queryTeam.toString(), Team.class);
-			team = (Team) query.getResultList().get(0);
-			queryTeam = new StringBuilder();
-			if(team != null){
-				return team;
-			}
-		}
-		
-		return team;
+    	StringBuilder sql = new StringBuilder();
+    	sql.append("SELECT t from TEAM t ");
+    	sql.append("left join t.league l ");
+    	sql.append("left join l.country c ");
+    	sql.append("where 1=1 ");
+    	sql.append("and c.id = :idCountry");
+    	sql.append("and l.level = :level");
+    	
+    	Query query = em.createQuery(sql.toString());
+		query.setParameter("idCountry", country.getId());
+		query.setParameter("level", 3); //TODO colocado valor arbitrario, 3, deve-se pegar o ultimo level, fazer rotina para buscar o ultimo
+		return  (Team) query.getSingleResult();
     }
-    
+    //TODO query nativa mongoDB
     @SuppressWarnings("unchecked")
-	public List<Team> getTeans(Long idLeague) {
+	public List<Team> getTeansMONGODB(Long idLeague) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("db.Team.find({'league_id': ");
 		sql.append(idLeague);
 		sql.append("})");
   
 		Query query = em.createNativeQuery(sql.toString(), Team.class);
+		return  query.getResultList();
+	}
+    
+    @SuppressWarnings("unchecked")
+	public List<Team> getTeans(Long idLeague) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT t from  Team t ");
+		sql.append("left join t.league l ");
+		sql.append("where 1=1 ");
+		sql.append("and l.id = :idLeague ");
+  
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("idLeague", idLeague);
 		return  query.getResultList();
 	}
 }

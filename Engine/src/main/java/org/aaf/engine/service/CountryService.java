@@ -61,7 +61,8 @@ public class CountryService {
 		return list;
 	}
 
-	public List<Country> queryCache2() {
+	//TODO query para mongo nativo
+	public List<Country> queryCache2MONGODB() {
 		String query1 = "db.Property.find({'value': 'b'})";
 		Query query = em.createNativeQuery(query1, Country.class);
 
