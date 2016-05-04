@@ -66,4 +66,15 @@ public class TeamService {
 		
 		return team;
     }
+    
+    @SuppressWarnings("unchecked")
+	public List<Team> getTeans(Long idLeague) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("db.Team.find({'league_id': ");
+		sql.append(idLeague);
+		sql.append("})");
+  
+		Query query = em.createNativeQuery(sql.toString(), Team.class);
+		return  query.getResultList();
+	}
 }

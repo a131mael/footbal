@@ -24,11 +24,12 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.Player;
-import org.aaf.webInterface.util.HabilityEnum;
+import org.aaf.webInterface.model.League;
+import org.aaf.webInterface.model.Match;
+import org.aaf.webInterface.model.Team;
 
 @Stateless
-public class PlayerService {
+public class LeagueService {
 
     @Inject
     private Logger log;
@@ -36,32 +37,5 @@ public class PlayerService {
     @Inject
     private EntityManager em;
 
-
-	public List<Player> getPlayers(Long id, String orderBy) {
-		StringBuilder sql = new StringBuilder();
-    	sql.append("db.Player.find({'team_id': ");
-    	sql.append(id);
-    	sql.append("},");//Query
-    	sql.append("{'ignore': 0},"); //Projecao
-    	
-    	sql.append("{ 'sort': [['"); //Sorte
-//    	sql.append(orderBy);
-    	sql.append("age");
-    	sql.append("',");
-    	sql.append("'asc'");
-    	sql.append("]]}");
-    	sql.append(")");
-		Query query = em.createNativeQuery(sql.toString(), Player.class);
-		return  query.getResultList();
-		
-		
-		
-//		StringBuilder sql = new StringBuilder();
-//    	sql.append("db.Player.find({'team_id': ");
-//    	sql.append(id);
-//    	sql.append("})");
-//		Query query = em.createNativeQuery(sql.toString(), Player.class);
-//		return  query.getResultList();
-		
-	}
+	
 }

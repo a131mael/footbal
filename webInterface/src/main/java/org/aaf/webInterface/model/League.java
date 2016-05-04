@@ -1,12 +1,15 @@
 package org.aaf.webInterface.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -27,6 +30,9 @@ public class League implements Serializable{
 	private String cod;
 	
 	private int level;
+	
+	@OneToMany(fetch=FetchType.EAGER)
+	private List<Team> teans;
 
 	@ManyToOne
 	private Country country;
@@ -69,6 +75,14 @@ public class League implements Serializable{
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	public List<Team> getTeans() {
+		return teans;
+	}
+
+	public void setTeans(List<Team> teans) {
+		this.teans = teans;
 	}
 
 }

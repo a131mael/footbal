@@ -9,29 +9,36 @@
 	<ui:define name="content">
 
 		<div>
-		<h:outputLabel for="orderBy" value="Order by: " />
-            <h:selectOneMenu id="orderBy" value="#{dropdownView.country}" style="width:150px">
-<!--                 <p:ajax listener="#{dropdownView.onCountryChange}" update="city" /> -->
-                <f:selectItem itemLabel="Hability" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{habilityEnum.enuns}" />
-            </h:selectOneMenu>
-            <br/>
-            
+			<h:outputLabel for="orderBy" value="Order by: " />
+
+			<h:selectOneMenu label="orderBy"
+				style="width: 200px; margin-left: 10px;" 
+				value="playerController.selectedHability">
+				<f:selectItem itemLabel="Hability" itemValue="" />
+				<f:selectItems value="#{selectItems.habilityEnum}" />
+				<f:ajax execute="@this" render="@all" event="click"/>
+			</h:selectOneMenu>
+
+
+			
+			<br />
+
 			<ui:repeat var="player" value="#{playerController.teamPlayers}"
 				varStatus="status">
-				<h:panelGrid columns="8" > 
-						<img
-							src="../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
-							width="16px" height="16px" alt="#{player.country.name}" />
-						<h:outputLabel value="#{player.name}" />
-						<h:outputLabel value="#{playerHability.getAge(player.age)}" />
-						<h:outputText value="#{msg['player.age.yearOld']} "  />
-						<h:outputText value=" " style="padding-left: 30px"/>
-						<h:outputText value="#{msg['player.height']}: " />
-						<h:outputLabel value="#{playerHability.getHeigth(player.height)}" style="margin-left:2px"/>
-					</h:panelGrid>
+				<h:panelGrid columns="8">
+					<img
+						src="../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
+						width="16px" height="16px" alt="#{player.country.name}" />
+					<h:outputLabel value="#{player.name}" />
+					<h:outputLabel value="#{playerHability.getAge(player.age)}" />
+					<h:outputText value="#{msg['player.age.yearOld']} " />
+					<h:outputText value=" " style="padding-left: 30px" />
+					<h:outputText value="#{msg['player.height']}: " />
+					<h:outputLabel value="#{playerHability.getHeigth(player.height)}"
+						style="margin-left:2px" />
+				</h:panelGrid>
 				<center>
-					
+
 					<hr />
 
 					<h:panelGrid columns="3">

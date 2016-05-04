@@ -52,6 +52,8 @@ public class Player {
 	private float goalKeaper;
 	private float workIndex;
 	
+	private String ignore;
+	
 	public String getCod() {
 		return cod;
 	}
@@ -234,6 +236,14 @@ public class Player {
 
 	public void setSalary(Float salary) {
 		this.salary = salary;
+	}
+
+	public String getIgnore() {
+		return ignore;
+	}
+
+	public void setIgnore(String ignore) {
+		this.ignore = ignore;
 	}
 
 }

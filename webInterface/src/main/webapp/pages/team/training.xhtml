@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/userDefault.xhtml">
+
+	<ui:define name="content">
+		<div>
+
+			<h:panelGrid width="100%" columns="2">
+				<h:panelGrid>
+					<h:outputLabel value="Jogos da Liga" />
+					<hr />
+					<ui:repeat var="week" value="#{matchController.weeks}"
+						varStatus="status">
+
+						<h:panelGrid columns="2">
+							<h:outputLabel value="#{msg['match.week']}: " />
+							<h:outputLabel value="#{week}" />
+
+							<div>
+								<ui:repeat var="match"
+									value="#{matchController.getTeamMatchs(week)}"
+									varStatus="matchStatus">
+									<h:panelGrid columns="3">
+										<h:outputText value="#{match.homeTeam.name}" />
+										<h:outputLabel value=" - " />
+										<h:outputText value="#{match.visitTeam.name}" />
+									</h:panelGrid>
+
+								</ui:repeat>
+							</div>
+
+						</h:panelGrid>
+
+
+					</ui:repeat>
+
+
+				</h:panelGrid>
+				<h:panelGrid>
+					<h:outputLabel value="Outros" />
+					<hr />
+
+				</h:panelGrid>
+
+
+			</h:panelGrid>
+
+
+
+
+
+		</div>
+
+	</ui:define>
+</ui:composition>
