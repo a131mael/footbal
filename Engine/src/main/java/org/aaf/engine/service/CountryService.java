@@ -17,7 +17,7 @@ import org.aaf.engine.model.Property;
 @Stateless
 public class CountryService {
 
-	@PersistenceContext(unitName = "mongo-ogm")
+	@Inject
 	private EntityManager em;
 
 	@Inject

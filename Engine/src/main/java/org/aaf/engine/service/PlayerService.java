@@ -15,7 +15,7 @@ import org.aaf.engine.model.Team;
 @Stateless
 public class PlayerService {
 
-	@PersistenceContext(unitName = "mongo-ogm")
+	@Inject
 	private EntityManager em;
 
 	@Inject

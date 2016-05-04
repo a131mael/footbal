@@ -20,7 +20,7 @@ import org.aaf.engine.model.Team;
 @Stateless
 public class MatchService {
 
-	@PersistenceContext(unitName = "mongo-ogm")
+	@Inject
 	private EntityManager em;
 
 	@Inject
@@ -32,8 +32,9 @@ public class MatchService {
 	@Inject
 	private TeamService teamService;
 
+	//TODO query nativa para mongoDB
 	@SuppressWarnings("unchecked")
-	public void createMatches(Country country) {
+	public void createMatchesMongo(Country country) {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("db.League.find({'country_id': ");
@@ -61,6 +62,34 @@ public class MatchService {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	public void createMatches(Country country) {
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("Select l From League l left join l.country c  where c.id = :countryID ");
+		
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("countryID", country.getId());
+		List<League> leagues = (List<League>) query.getResultList();
+
+		List<Integer> index = new ArrayList<>();
+		for(int i =0; i<8;i++){ //8 teams per League, if more, chance the number
+			index.add(i);
+		}
+		int index2Group = index.size()/2;
+
+		StringBuilder sqlTeamLeague = new StringBuilder();
+		for (League l : leagues) {
+			sqlTeamLeague.append("SELECT t From Team t left join t.league l where l.id = :idLeague ");
+			
+			Query queryTeans = em.createQuery(sqlTeamLeague.toString());
+			queryTeans.setParameter("idLeague", l.getId());
+			List<Team> teans = queryTeans.getResultList();
+
+		}
+	}
+	
+	
 	private static void escalonar(List<Integer> index) {
 		int finalIndex = index.size()-1;
 		List<Integer> indexClone = new ArrayList<>();

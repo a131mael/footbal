@@ -37,12 +37,17 @@ public class PlayerService {
 
 	@SuppressWarnings("unchecked")
 	public List<Player> getPlayers(Long id) {
-		StringBuilder sql = new StringBuilder();
-    	sql.append("db.Player.find({'team_id': ");
-    	sql.append(id);
-    	sql.append("})");
-		Query query = em.createNativeQuery(sql.toString(), Player.class);
+		Query query = em.createNativeQuery("db.Player.find({\'team_id\':1}).sort({\"age\":1});", Player.class);
 		return  query.getResultList();
+		
+		
+		
+//		StringBuilder sql = new StringBuilder();
+//    	sql.append("db.Player.find({'team_id': ");
+//    	sql.append(id);
+//    	sql.append("})");
+//		Query query = em.createNativeQuery(sql.toString(), Player.class);
+//		return  query.getResultList();
 		
 	}
 }

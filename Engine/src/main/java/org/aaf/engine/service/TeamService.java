@@ -20,7 +20,7 @@ import com.mongodb.DB;
 @Stateless
 public class TeamService {
 
-	@PersistenceContext(unitName = "mongo-ogm")
+	@Inject
 	private EntityManager em;
 
 	@Inject
