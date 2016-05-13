@@ -13,6 +13,7 @@ import javax.persistence.Query;
 import org.aaf.engine.dto.CountryDTO;
 import org.aaf.engine.model.Country;
 import org.aaf.engine.model.Property;
+import org.aaf.engine.model.User;
 
 @Stateless
 public class CountryService {
@@ -34,6 +35,7 @@ public class CountryService {
 
 		log.info("Registering " + country.getName());
 		leagueService.createLeague(country);
+
 	}
 
 	public void save(Country country) throws Exception {

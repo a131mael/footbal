@@ -15,7 +15,6 @@ import org.aaf.engine.model.League;
 import org.aaf.engine.model.Property;
 import org.aaf.engine.model.Team;
 
-import com.mongodb.DB;
 
 @Stateless
 public class TeamService {
@@ -59,8 +58,9 @@ public class TeamService {
 		return team;
 	}
 
+	//TODO MongoDB native query
 	@SuppressWarnings("unchecked")
-	public long countActiveTeams(Country country) {
+	public long countActiveTeamsMONGODB(Country country) {
 		StringBuilder queryLeague = new StringBuilder();
 		queryLeague.append("db.League.find({'country_id': ");
 		queryLeague.append(country.getId());
@@ -86,6 +86,26 @@ public class TeamService {
 			queryTeam = new StringBuilder();
 		}
 		return countTeam;
+	}
+
+	@SuppressWarnings("unchecked")
+	public long countActiveTeams(Country country) {
+		StringBuilder queryLeague = new StringBuilder();
+		queryLeague.append("Select t from Team t ");
+		queryLeague.append("left join t.owner o ");
+		queryLeague.append("left join t.league l ");
+		queryLeague.append("left join l.country c  ");
+		queryLeague.append("where 1=1 ");
+		queryLeague.append("and o is not null ");
+		queryLeague.append("and c.id = :idPais");
+		Query query = em.createQuery(queryLeague.toString());
+		query.setParameter("idPais", country.getId());
+		
+		List<Team> times = query.getResultList();
+		Long total =  (long) times.size() ;
+		
+		
+		return total;
 	}
 
 	@SuppressWarnings("unchecked")
