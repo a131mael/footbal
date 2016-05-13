@@ -36,8 +36,8 @@ public class PlayerService {
     @Inject
     private EntityManager em;
 
-
-	public List<Player> getPlayers(Long id, String orderBy) {
+//TODO query nativa para mongo
+	public List<Player> getPlayersMONGODB(Long id, String orderBy) {
 		StringBuilder sql = new StringBuilder();
     	sql.append("db.Player.find({'team_id': ");
     	sql.append(id);
@@ -54,14 +54,18 @@ public class PlayerService {
 		Query query = em.createNativeQuery(sql.toString(), Player.class);
 		return  query.getResultList();
 		
+	}
+	@SuppressWarnings("unchecked")
+	public List<Player> getPlayers(Long teamID, String orderBy) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT p from  Player p ");
+		sql.append("left join p.team t ");
+		sql.append("where 1 = 1 ");
+		sql.append("and t.id = :teamID ");
 		
-		
-//		StringBuilder sql = new StringBuilder();
-//    	sql.append("db.Player.find({'team_id': ");
-//    	sql.append(id);
-//    	sql.append("})");
-//		Query query = em.createNativeQuery(sql.toString(), Player.class);
-//		return  query.getResultList();
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("teamID", teamID);
+		return  query.getResultList();
 		
 	}
 }

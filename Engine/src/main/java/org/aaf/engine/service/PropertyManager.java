@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import org.aaf.engine.model.Property;
 
 @Stateless
+@Deprecated //decrepted 04/05/16
 public class PropertyManager {
 
 	@Inject
